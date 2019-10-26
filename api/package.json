@@ -1,0 +1,18 @@
+{
+  "name": "mock-api",
+  "version": "1.0.0",
+  "description": "baseline api",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "npm run test"
+  },
+  "author": "hybridcoder",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^2.2.16",
+    "nodemon": "^1.19.4"
+  }
+}

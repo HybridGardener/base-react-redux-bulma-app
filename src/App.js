@@ -9,7 +9,7 @@ import Login from './components/Login';
 import { getIsUserLoggedIn } from './rootReducer';
 
 function App({ isUserLoggedIn }) {
-  if (!isUserLoggedIn) return <Login />
+  if (!isUserLoggedIn) return <Login id="" />
   return (
     <section className="section">
       <Switch>
