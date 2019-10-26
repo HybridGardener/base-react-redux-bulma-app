@@ -1,0 +1,88 @@
+@function theme-color($customer: 'dxp-light', $key: 'color-primary') {
+  $map: map-get($theme-colors, $customer);
+  @return map-get($map, $key);
+}
+
+@function theme-background-color($customer: 'dxp-light', $key: 'color-primary') {
+  $map: map-get($theme-colors, $customer);
+  @return map-get($map, $key);
+}
+
+@function theme-font-family($customer: 'dxp-light', $key: 'font-family-primary') {
+  $map: map-get($theme-font-family, $customer);
+  @return map-get($map, $key);
+}
+
+@function theme-font-weight($customer: 'dxp-light', $key: 'font-weight-normal') {
+  $map: map-get($theme-font-weight, $customer);
+  @return map-get($map, $key);
+}
+
+@function theme-font-size($customer: 'dxp-light', $key: 'font-size-14') {
+  $map: map-get($theme-font-size, $customer);
+  @return map-get($map, $key);
+}
+
+@function rem($pixels, $context: $unit) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}
+
+@function map-get-default($map, $key) {
+  $result: $key;
+  @if (map-get($map, $key)) {
+    $result: map-get($map, $key);
+  }
+
+  @return $result;
+}
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @return if(
+    $index,
+    str-slice($string, 1, $index - 1) + $replace +
+      str-replace(str-slice($string, $index + str-length($search)), $search, $replace),
+    $string
+  );
+}
+
+@function to-string($value) {
+  @return inspect($value);
+}
+
+// url encodes # in strings (see backgroundsvg.scss for working example)
+@function hexToUrl($color) {
+  $newcolor: str-replace(to-string($color), '#', '%23');
+  @return $newcolor;
+}
+
+// the reason we use 1600 here is because the designs were created at that width
+// when we get a measurement from the design we need to use 1600 to accurately
+// perform the calculation
+//
+// this function should only really be used for transitions between breakpoints
+// then set a final max size for the font above 1440px e.g.
+// e.g @include media-breakpoint-up(sm) { font-size: pxToVw(123) }
+// e.g @include media-breakpoint-up(xl) { font-size: rem(123) }
+@function pxToVw($pxSize, $screenSize: 1600) {
+  @return ($pxSize / $screenSize * 100) + vw;
+}
+
+@function pxToVwDesktop($pxSize, $screenSize: 1600) {
+  @return ($pxSize / $screenSize * 100) + vw;
+}
+
+@function pxToVwMobile($pxSize, $screenSize: 375) {
+  @return ($pxSize / $screenSize * 100) + vw;
+}
+
+
+

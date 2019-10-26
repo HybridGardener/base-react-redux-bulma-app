@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="475px" height="475px" viewBox="0 0 475 475" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <circle id="Oval" stroke="#FFFFFF" stroke-width="20" cx="238" cy="238" r="116"></circle>
+            <circle id="Oval-2" fill="#FFFFFF" cx="238" cy="238" r="35"></circle>
+            <g id="Group" transform="translate(20.000000, 20.000000)">
+                <g id="ek" transform="translate(17.000000, 0.000000)">
+                    <g id="Group">
+                        <path d="M342.764054,77.2599096 L58.2359461,357.74009" id="Line" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" transform="translate(200.500000, 217.500000) rotate(-45.000000) translate(-200.500000, -217.500000) "></path>
+                        <rect id="Rectangle" fill="#FFFFFF" x="189" y="0" width="25" height="77" rx="12"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="187" y="358" width="25" height="77" rx="12"></rect>
+                    </g>
+                </g>
+                <g id="ek" transform="translate(217.500000, 217.500000) rotate(-270.000000) translate(-217.500000, -217.500000) translate(17.000000, 0.000000)">
+                    <g id="Group">
+                        <path d="M342.764054,77.2599096 L58.2359461,357.74009" id="Line" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" transform="translate(200.500000, 217.500000) rotate(-45.000000) translate(-200.500000, -217.500000) "></path>
+                        <rect id="Rectangle" fill="#FFFFFF" x="189" y="0" width="25" height="77" rx="12"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="187" y="358" width="25" height="77" rx="12"></rect>
+                    </g>
+                </g>
+            </g>
+            <g id="Group" transform="translate(237.500000, 237.500000) rotate(-315.000000) translate(-237.500000, -237.500000) translate(20.000000, 20.000000)">
+                <g id="ek" transform="translate(17.000000, 0.000000)">
+                    <g id="Group">
+                        <path d="M342.764054,77.2599096 L58.2359461,357.74009" id="Line" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" transform="translate(200.500000, 217.500000) rotate(-45.000000) translate(-200.500000, -217.500000) "></path>
+                        <rect id="Rectangle" fill="#FFFFFF" x="189" y="0" width="25" height="77" rx="12"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="187" y="358" width="25" height="77" rx="12"></rect>
+                    </g>
+                </g>
+                <g id="ek" transform="translate(217.500000, 217.500000) rotate(-270.000000) translate(-217.500000, -217.500000) translate(17.000000, 0.000000)">
+                    <g id="Group">
+                        <path d="M342.764054,77.2599096 L58.2359461,357.74009" id="Line" stroke="#FFFFFF" stroke-width="15" stroke-linecap="square" transform="translate(200.500000, 217.500000) rotate(-45.000000) translate(-200.500000, -217.500000) "></path>
+                        <rect id="Rectangle" fill="#FFFFFF" x="189" y="0" width="25" height="77" rx="12"></rect>
+                        <rect id="Rectangle" fill="#FFFFFF" x="187" y="358" width="25" height="77" rx="12"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

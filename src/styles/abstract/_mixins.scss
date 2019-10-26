@@ -1,0 +1,145 @@
+@mixin font(
+  $size: null,
+  $name: $font-family-base,
+  $weight: null,
+  $color: null,
+  $line-height: $line-height-base,
+  $style: null
+) {
+
+  @if $size != null {
+    font-size: $size;
+  }
+
+  @if $name != null {
+    font-family: map-get-default($fonts, $name);
+  }
+
+  @if $weight != null {
+    font-weight: map-get-default($font-weights, $weight);
+  }
+
+  @if $line-height != null {
+    line-height: $line-height;
+  }
+
+  @if $color != null {
+    color: $color;
+  }
+
+  @if $style != null {
+    font-style: $style;
+  }
+}
+
+@mixin mixin-font-family($key) {
+  font-family: theme-font-family('dxp-light', $key);
+  .dxp-light & {
+    font-family: theme-font-family('dxp-light', $key);
+  }
+  .vv-light & {
+    font-family: theme-font-family('dxp-light', $key);
+  }
+  .ncl-light & {
+    font-family: theme-font-family('dxp-light', $key);
+  }
+}
+
+@mixin mixin-font-size($key) {
+  font-size: theme-font-size('dxp-light', $key);
+  .dxp-light & {
+    font-size: theme-font-size('dxp-light', $key);
+  }
+  .vv-light & {
+    font-size: theme-font-size('vv-light', $key);
+  }
+  .ncl-light & {
+    font-size: theme-font-size('ncl-light', $key);
+  }
+}
+
+@mixin mixin-font-weight($key) {
+  font-weight: theme-font-weight('dxp-light', $key);
+  .dxp-light & {
+    font-weight: theme-font-weight('dxp-light', $key);
+  }
+  .vv-light & {
+    font-weight: theme-font-weight('vv-light', $key);
+  }
+  .ncl-light & {
+    font-weight: theme-font-weight('ncl-light', $key);
+  }
+}
+
+@mixin mixin-color($key) {
+  color: theme-color('dxp-light', $key);
+  .dxp-light & {
+    color: theme-color('dxp-light', $key);
+  }
+  .vv-light & {
+    color: theme-color('vv-light', $key);
+  }
+  .ncl-light & {
+    color: theme-color('ncl-light', $key);
+  }
+}
+
+@mixin mixin-background-color($key) {
+  background-color: theme-background-color('dxp-light', $key);
+  .dxp-light & {
+    background-color: theme-background-color('dxp-light', $key);
+  }
+  .vv-light & {
+    background-color: theme-background-color('vv-light', $key);
+  }
+  .ncl-light & {
+    background-color: theme-background-color('ncl-light', $key);
+  }
+}
+
+@mixin mixin-border($style: solid, $color: 'color-primary', $top: 1px, $right: 1px, $down: 1px, $left: 1px) {
+  border-width: $top $right $down $left;
+  border-style: $style;
+  border-color: theme-color('dxp-light', $color);
+  .dxp-light & {
+    border-width: $top $right $down $left;
+    border-style: $style;
+    border-color: theme-color('dxp-light', $color);
+  }
+  .vv-light & {
+    border-width: $top $right $down $left;
+    border-style: $style;
+    border-color: theme-color('vv-light', $color);
+  }
+  .ncl-light & {
+    border-width: $top $right $down $left;
+    border-style: $style;
+    border-color: theme-color('ncl-light', $color);
+  }
+}
+
+@mixin mixin-border-bottom-color($color: 'color-grey-1') {
+  border-bottom-color: theme-color('dxp-light', $color) !important;
+  .dxp-light & {
+    border-bottom-color: theme-color('dxp-light', $color) !important;
+  }
+  .vv-light & {
+    border-bottom-color: theme-color('dxp-light', $color) !important;
+  }
+  .ncl-light & {
+    border-bottom-color: theme-color('dxp-light', $color) !important;
+  }
+}
+
+@mixin mixin-box-shadow($top, $right, $down, $left, $color-r: 0, $color-g: 0, $color-b: 0, $color-a: 0.5) {
+  box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
+  .dxp-light & {
+    box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
+  }
+  .vv-light & {
+    box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
+  }
+  .ncl-light & {
+    box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
+  }
+}

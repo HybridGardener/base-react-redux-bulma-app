@@ -1,0 +1,16 @@
+
+.section {
+  padding: 1.25rem;
+}
+
+.RootContainer {
+  width: 100% !important;
+  @include mixin-background-color('color-grey-2');
+  .LayoutContainer {
+    display: flex;
+    justify-content: space-between;
+    .PageContainer {
+      width: 100%;
+    }
+  }
+}
