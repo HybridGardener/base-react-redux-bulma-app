@@ -3,25 +3,29 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import TextField from '../TextField'
 import { login } from '../../actions'
-import { getAuthenticating } from '../../rootReducer'
+import { getAuthenticating, getError } from '../../rootReducer'
 import './style.scss'
 import banner from '../../images/VV/banner.jpg'
 import mobileBanner from '../../images/VV/mobile-banner.jpg'
-const Login = ({ authenticating, handleLogin, title }) => {
+
+const Login = ({ authenticating, handleLogin, error }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
         <section className="section">
-
-            <div className="columns is-variable is-mobile is-touch is-desktop">
-                <div className="column is-hidden-mobile">
-                    <img alt="banner" src={banner}>
-                    </img>
-                </div>
-                <div className="column is-hidden-desktop">
-                    <figure className="image is-fullwidth">
-                        <img alt="mobile-banner" src={mobileBanner} />
-                    </figure>
+            <div className="hero is-unmargined">
+                <div className="columns is-variable is-mobile is-touch is-desktop">
+                    <div className="column is-hidden-mobile  ">
+                        <figure className="image is-fullwidth">
+                            <img alt="banner" src={banner}>
+                            </img>
+                        </figure>
+                    </div>
+                    <div className="column is-mobile is-hidden-desktop is-hidden-tablet  ">
+                        <figure className="image is-fullwidth">
+                            <img alt="mobile-banner" src={mobileBanner} />
+                        </figure>
+                    </div>
                 </div>
             </div>
             <div className="container login_card ">
@@ -37,14 +41,19 @@ const Login = ({ authenticating, handleLogin, title }) => {
                         </div>
                         <div className="columns ">
                             <div className="column ">
-                                <TextField name="username" id="Login.username" value={username} handleChange={(e) => setUsername(e.target.value)} />
+                                <TextField name="username" type={"email"} hasCheck={username !== ""} styleName={"input"} id="Login.username" value={username} handleChange={(e) => setUsername(e.target.value)} />
                             </div>
                         </div>
                         <div className="columns">
                             <div className="column ">
-                                <TextField name="password" id="Login.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
+                                <TextField name="password" type={"password"} hasCheck={password !== ""} styleName={"input"} id="Login.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </div>
+                        {error ? <div className="columns">
+                            <div className="column">
+                                <p>{error}</p>
+                            </div>
+                        </div> : ""}
                         <div className="columns">
                             <div className="column">
                                 <button className="button is-primary is-fullwidth" onClick={() => handleLogin(username, password)} disabled={authenticating}>
@@ -58,9 +67,16 @@ const Login = ({ authenticating, handleLogin, title }) => {
             </div>   </section>
     )
 }
+function validateEmail(email) {
+    return email !== "";
+}
+function validatePassword(password) {
+    return password !== "";
+}
 const mapStateToProps = (state) => {
     return {
-        authenticating: getAuthenticating(state)
+        authenticating: getAuthenticating(state),
+        error: getError(state)
     }
 }
 const mapDispatchToProps = (dispatch) => {

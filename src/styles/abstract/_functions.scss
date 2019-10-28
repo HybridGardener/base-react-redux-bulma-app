@@ -1,3 +1,4 @@
+
 @function theme-color($customer: 'dxp-light', $key: 'color-primary') {
   $map: map-get($theme-colors, $customer);
   @return map-get($map, $key);

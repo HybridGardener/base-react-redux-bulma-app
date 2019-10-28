@@ -7,15 +7,20 @@ import { Switch, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import { getIsUserLoggedIn } from './rootReducer';
+import Navigation from './components/Navigation';
 
 function App({ isUserLoggedIn }) {
-  if (!isUserLoggedIn) return <Login id="" />
+  if (!isUserLoggedIn) return <Login />
   return (
-    <section className="section">
-      <Switch>
-        <Route exact to="/" render={() => <Dashboard title="Home" />} />
-      </Switch>
-    </section>
+    <div className="RootContainer">
+      <Navigation />
+      <div className="container">
+
+        <Switch>
+          <Route exact to="/" render={() => <Dashboard title="Home" />} />
+        </Switch>
+      </div>
+    </div>
   );
 }
 

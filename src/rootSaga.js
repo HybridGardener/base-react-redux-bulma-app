@@ -1,5 +1,5 @@
 import { put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN } from './actions';
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed } from './actions';
 import { BASE_URL, PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 
@@ -24,5 +24,15 @@ export function* loadModuleSaga() {
 }
 
 export function* loginSaga(action) {
-
+    try {
+        const username = action.payload.username;
+        const password = action.payload.password;
+        if (username === 'admin' && password === '1234') {
+            yield put(loginSucceeded());
+        } else {
+            yield put(loginFailed('invalid credentials'));
+        }
+    } catch (error) {
+        yield put(loginFailed(error));
+    }
 }
