@@ -1,0 +1,70 @@
+{
+    "users": [
+        {
+            "username": "admin",
+            "password": "1234",
+            "userProfile": {
+                "theme": "light",
+                "language": "en",
+                "avatar": ""
+            }
+        },
+        {
+            "username": "guest",
+            "password": "4321",
+            "userProfile": {
+                "theme": "dark",
+                "language": "en",
+                "avatar": ""
+            }
+        }
+    ],
+    "todos": [
+        {
+            "todoId": "x01359",
+            "description": "Brush teeth",
+            "createdDate": "10/25/2018 00:01:00",
+            "completedDate": "10/25/2018 01:00:00",
+            "isComplete": true,
+            "sla": 1
+        },
+        {
+            "todoId": "x01245",
+            "description": "Clean hallway",
+            "createdDate": "10/25/2018 00:01:00",
+            "completedDate": "10/25/2018 01:00:00",
+            "isComplete": true,
+            "sla": 3
+        },
+        {
+            "todoId": "x01246",
+            "description": "Wash car",
+            "createdDate": "10/25/2018 00:01:00",
+            "completedDate": "10/25/2018 01:00:00",
+            "isComplete": true,
+            "sla": 0
+        }
+    ],
+    "slas": [
+        {
+            "slaId": 0,
+            "maxTimeToDo": 0,
+            "display": "Whenever"
+        },
+        {
+            "slaId": 1,
+            "maxTimeToDo": 30,
+            "display": "Half Hour"
+        },
+        {
+            "slaId": 2,
+            "maxTimeToDo": 45,
+            "display": "Fourty-Five Minutes"
+        },
+        {
+            "slaId": 3,
+            "maxTimeToDo": 60,
+            "display": "One Hour"
+        }
+    ]
+}

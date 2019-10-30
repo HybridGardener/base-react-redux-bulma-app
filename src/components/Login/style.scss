@@ -3,6 +3,8 @@
     padding:3em;
     position: relative;
     bottom:5em;
+    @include mixin-background-color('color-white');
+@include mixin-color('text-color-primary');
   
 }
 .overlay{
@@ -10,3 +12,4 @@
       left:45%;
       bottom: 20em; 
 }
+

@@ -1,4 +1,4 @@
-$theme: 'vv-light';
+
 @mixin font(
   $size: null,
   $name: $font-family-base,
@@ -82,14 +82,11 @@ $theme: 'vv-light';
  
 }
 
-@mixin mixin-border-bottom-color($color: 'color-grey-1') {
-  border-bottom-color: theme-color($theme, $color) !important;
+@mixin mixin-border($color:'color-primary') {
+  border: 2px solid theme-color($theme, $color) !important;
  
 }
-@mixin mixin-border-left-color($color: 'color-grey-1') {
-  border-left-color: theme-color($theme, $color) !important;
- 
-}
+
 @mixin mixin-box-shadow($top, $right, $down, $left, $color-r: 0, $color-g: 0, $color-b: 0, $color-a: 0.5) {
   box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
   

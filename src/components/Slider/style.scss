@@ -4,9 +4,9 @@
     margin: 13.8px 0;
     appearance: none;
     width: 100%; /* Full-width */
-    height: 5px; /* Specified height */
+    height: 2px; /* Specified height */
     border-radius: 5px;  
-    background: black; /* Grey background */
+    @include mixin-background-color('text-color-primary');
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -27,23 +27,25 @@
     @include mixin-background-color('color-grey-2');
     border-radius: 50%; 
     cursor: pointer; /* Cursor on hover */
+    @include mixin-border('color-grey-4');
   }
   
   .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    @include mixin-background-color('color-grey-2');
+    @include mixin-background-color('color-grey-1');
     border-radius: 50%;
     cursor: pointer; /* Cursor on hover */
   }
   .valueDisplay{
     @include mixin-color('text-color-primary');
     @include mixin-background-color('color-white');
+    @include mixin-font-weight('font-size-12');
     border-radius: 10px;
     width:30px;
     text-align: center;
     align-content: center;
     padding-top:.15em;
-    border: 1px solid black;
+
 
   }

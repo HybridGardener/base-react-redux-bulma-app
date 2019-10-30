@@ -1,33 +1,26 @@
 import React from 'react'
-
-const ListItem = ({ avatar }) => {
+import './style.scss';
+import Edit from '../../images/vv-light/edit.svg'
+const ListItem = ({ avatar, key, onClick, title, createdDate, complete }) => {
     return (
-        <article class="media">
-            <figure class="media-left">
-                <p class="image is-64x64">
+        <article className="media card listItem" key={key} onClick={onClick}>
+            <figure className="media-left">
+                <p className="image is-64x64">
                     <img alt="avatar" src={avatar} />
                 </p>
             </figure>
-            <div class="media-content">
-                <div class="content">
-                    <h1>Hey</h1>
+            <div className="media-content">
+                <div className="content">
+                    <p> <strong className="title">{title}</strong></p>
+                    <p>  <small>{createdDate}</small></p>
+                    <div className="tag is-dark">{complete ? "Complete" : "TODO"}</div>
                 </div>
-                <nav class="level is-mobile">
-                    <div class="level-left">
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                        </a>
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                        </a>
-                        <a class="level-item">
-                            <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                        </a>
-                    </div>
-                </nav>
             </div>
-            <div class="media-right">
-                <button class="delete"></button>
+            <div className="media-right">
+                <figure className="image is-24x24">
+                    <img alt="edit" src={Edit} />
+
+                </figure>
             </div>
         </article>
     )

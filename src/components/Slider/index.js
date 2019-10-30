@@ -7,10 +7,19 @@ import './style.scss'
 const Slider = ({ min, max, step, id, name, onChange, value }) => {
     return (
         <>
-            <FormattedMessage id={id} />
-            <div className="field level">
-                <input min={min} max={max} step={step} onChange={onChange} type="range" className="slider" />
-                <span className="tag is-light is-medium">{value}</span>
+            <div className="field">
+                <div className="tags has-addons">
+                    <span className="tag is-light is-medium">
+                        <FormattedMessage id={id} /></span>
+                    <span className="tag is-dark is-medium">{value}</span>
+                </div>
+                <input min={min}
+                    max={max}
+                    step={step}
+                    onChange={onChange}
+                    name={name}
+                    type="range"
+                    className="slider" />
             </div>
         </>
     )

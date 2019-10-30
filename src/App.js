@@ -13,13 +13,15 @@ function App({ isUserLoggedIn }) {
   if (!isUserLoggedIn) return <Login />
   return (
     <div className="RootContainer">
-      <Navigation />
+      <Navigation title="DXP Module" />
       <div className="container">
-
         <Switch>
-          <Route exact to="/" render={() => <Dashboard title="Home" />} />
+          <Route exact to="/" render={() => <Dashboard title="Dashboard" />} />
         </Switch>
       </div>
+      <footer className="footer">
+
+      </footer>
     </div>
   );
 }

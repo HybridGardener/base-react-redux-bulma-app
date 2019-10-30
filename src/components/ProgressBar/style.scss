@@ -1,0 +1,4 @@
+.bar{
+    @include mixin-background-color('color-primary');
+    @include mixin-color('text-color-primary');
+}

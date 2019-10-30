@@ -14,4 +14,8 @@
       width: 100%;
     }
   }
+  .footer{
+  @include mixin-background-color('color-grey-2');
+
+  }
 }

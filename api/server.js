@@ -10,8 +10,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/user-access-service', function (req, res) {
-    res.send('Working')
+app.get('/users', function (req, res) {
+    res.json();
 })
 app.post('/messages', (req, res) => {
     const id = uuidv4();
