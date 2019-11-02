@@ -1,18 +1,18 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import { PropTypes } from 'prop-types'
-import './style.scss'
 
 
 const Slider = ({ min, max, step, id, name, onChange, value }) => {
     return (
-        <>
+        <div >
             <div className="field">
                 <div className="tags has-addons">
                     <span className="tag is-light is-medium">
                         <FormattedMessage id={id} /></span>
                     <span className="tag is-dark is-medium">{value}</span>
                 </div>
+
                 <input min={min}
                     max={max}
                     step={step}
@@ -21,7 +21,7 @@ const Slider = ({ min, max, step, id, name, onChange, value }) => {
                     type="range"
                     className="slider" />
             </div>
-        </>
+        </div>
     )
 }
 Slider.propTypes = {

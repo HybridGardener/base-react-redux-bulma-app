@@ -1,0 +1,20 @@
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      width: 25px; /* Set a specific slider handle width */
+      height: 25px; /* Slider handle height */
+    }
+     
+      .slider::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+          @include mixin-background-color('color-grey-1');
+        border-radius: 50%;
+        cursor: pointer; /* Cursor on hover */
+      }
+     
+      .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+      }
+      
+

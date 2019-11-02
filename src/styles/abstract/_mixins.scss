@@ -33,61 +33,39 @@
   }
 }
 
-@mixin mixin-font-family($key) {
-  font-family: theme-font-family($theme, $key);
-  .dxp-light & {
-    font-family: theme-font-family($theme, $key);
-  }
-  .vv-light & {
-    font-family: theme-font-family($theme, $key);
-  }
-  .ncl-light & {
-    font-family: theme-font-family($theme, $key);
-  }
+@mixin mixin-font-family($brand,$key) {
+  font-family: theme-font-family($brand, $key) !important;
 }
 
-@mixin mixin-font-size($key) {
-  font-size: theme-font-size($theme, $key);
-  .dxp-light & {
-    font-size: theme-font-size($theme, $key);
-  }
-  .vv-light & {
-    font-size: theme-font-size('vv-light', $key);
-  }
-  .ncl-light & {
-    font-size: theme-font-size('ncl-light', $key);
-  }
+@mixin mixin-font-size($brand,$key) {
+  font-size: theme-font-size($brand, $key) !important;
 }
 
-@mixin mixin-font-weight($key) {
-  font-weight: theme-font-weight($theme, $key);
+@mixin mixin-font-weight($brand,$key) {
+  font-weight: theme-font-weight($brand, $key) !important;
  
 }
 
-@mixin mixin-color($key) {
-  color: theme-color($theme, $key);
+@mixin mixin-color($brand,$key) {
+  color: theme-color($brand, $key) !important;
  
 }
 
-@mixin mixin-background-color($key) {
-  background-color: theme-background-color($theme, $key);
- 
+@mixin mixin-background-color($brand:'dxp',$key:'color-grey-2') {
+  background-color: theme-background-color($brand, $key) !important;
 }
 
 
-@mixin mixin-border($style: solid, $color: 'color-primary', $top: 1px, $right: 1px, $down: 1px, $left: 1px) {
-  border-width: $top $right $down $left;
-  border-style: $style;
-  border-color: theme-color($theme, $color);
- 
+@mixin mixin-border($brand:'dxp',$style: solid, $color: 'color-primary', $top: 1px, $right: 1px, $down: 1px, $left: 1px) {
+  border-width: $top $right $down $left !important;
+  border-style: $style !important;
+  border-color: theme-color($brand, $color) !important;
 }
 
-@mixin mixin-border($color:'color-primary') {
-  border: 2px solid theme-color($theme, $color) !important;
- 
+@mixin mixin-border($brand:'dxp',$color:'color-primary') {
+  border: 2px solid theme-color($brand, $color) !important;
 }
 
 @mixin mixin-box-shadow($top, $right, $down, $left, $color-r: 0, $color-g: 0, $color-b: 0, $color-a: 0.5) {
   box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
-  
 }

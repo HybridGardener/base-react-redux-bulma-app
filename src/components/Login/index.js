@@ -3,14 +3,16 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import TextField from '../TextField'
 import { login } from '../../actions'
-import { getAuthenticating, getError } from '../../rootReducer'
+import { getAuthenticating, getError, getBrand } from '../../appReducer'
 import './style.scss'
-import banner from '../../images/VV/banner.jpg'
-import mobileBanner from '../../images/VV/mobile-banner.jpg'
+import banner from '../../images/vv/banner.jpg'
+import mobileBanner from '../../images/vv/mobile-banner.jpg'
+import Button from '../Button'
 
-const Login = ({ authenticating, handleLogin, error }) => {
+const Login = ({ brand, authenticating, handleLogin, error }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const classes = `${brand} section`
     return (
         <section className="section">
             <div className="hero is-unmargined">
@@ -51,7 +53,7 @@ const Login = ({ authenticating, handleLogin, error }) => {
                         </div>
                         {error ? <div className="columns">
                             <div className="column">
-                                <p>{error}</p>
+                                <p className="is-danger">{error}</p>
                             </div>
                         </div> : ""}
                         <div className="columns">
@@ -76,7 +78,8 @@ function validatePassword(password) {
 const mapStateToProps = (state) => {
     return {
         authenticating: getAuthenticating(state),
-        error: getError(state)
+        error: getError(state),
+        brand: getBrand(state)
     }
 }
 const mapDispatchToProps = (dispatch) => {

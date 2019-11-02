@@ -1,0 +1,41 @@
+
+   .dxp{
+    .btn {
+      @include mixin-font-size('font-size-24');
+      @include mixin-font-weight('font-weight-bold');
+      @include mixin-color('text-color-white');
+      @include mixin-background-color('color-primary');
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      height: 2.75rem;
+     
+    }
+  }
+  .vv{
+    .btn {
+      @include mixin-font-size('font-size-24');
+      @include mixin-font-weight('font-weight-bold');
+      @include mixin-color('text-color-white');
+      @include mixin-background-color('color-primary');
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      height: 2.75rem;
+     
+    }
+
+  }
+  .ncl{
+    .btn {
+      @include mixin-font-size('font-size-24');
+      @include mixin-font-weight('font-weight-bold');
+      @include mixin-color('text-color-white');
+      @include mixin-background-color('color-primary');
+      border-radius: 4px;
+      text-align: center;
+      cursor: pointer;
+      height: 2.75rem;
+     
+    }
+  }

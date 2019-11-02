@@ -1,7 +1,6 @@
 $modal-content-width: 60%;
 
-$theme-colors: (
-  'dxp-light': (
+$dxp-pallette: (
     'text-color-primary': #3c3c3c,
     'text-color-secondary': #777777,
     'color-primary': #007aff,
@@ -20,8 +19,8 @@ $theme-colors: (
     'color-grey-7': #dadada,
     'color-grey-8': #dbdbdb,
     'color-red': #6ab11c
-  ),
-  'vv-light': (
+  );
+  $vv-pallete: (
     'text-color-primary': #000000,
     'text-color-secondary': #777777,
     'color-primary': #d0021b,
@@ -40,8 +39,8 @@ $theme-colors: (
     'color-grey-7': #dadada,
     'color-grey-8': #dbdbdb,
     'color-red': #6ab11c,
-  ),
-  'ncl-light': (
+  );
+  $ncl-pallette: (
     'text-color-primary': #3c3c3c,
     'text-color-secondary': #777777,
     'color-primary': #007aff,
@@ -60,17 +59,16 @@ $theme-colors: (
     'color-grey-7': #dadada,
     'color-grey-8': #dbdbdb,
     'color-red': #6ab11c,
-  ),
 );
 
 $theme-font-family: (
-  'dxp-light': (
+  'dxp': (
     'font-family-primary': 'Roboto'
   ),
-  'vv-light': (
+  'vv': (
     'font-family-primary': 'Roboto'
   ),
-  'ncl-light': (
+  'ncl': (
     'font-family-primary': 'Roboto'
   ),
 );
@@ -79,7 +77,7 @@ $base-font-size: 0.875rem;
 $base-line-height: 1.25 * $base-font-size;
 
 $theme-font-size: (
-  'dxp-light': (
+  'dxp': (
     'font-size-12': .75rem, // 12px
     'font-size-14': .875rem, // 14px
     'font-size-16': 1rem, // 16px
@@ -90,7 +88,7 @@ $theme-font-size: (
     'font-size-34': 2.125rem, // 34px
     'font-size-44': 2.75rem // 44px
   ),
-  'vv-light': (
+  'vv': (
     'font-size-12': .75rem, // 12px
     'font-size-14': .875rem, // 14px
     'font-size-16': 1rem, // 16px
@@ -101,7 +99,7 @@ $theme-font-size: (
     'font-size-34': 2.125rem, // 34px
     'font-size-44': 2.75rem // 44px
   ),
-  'ncl-light': (
+  'ncl': (
     'font-size-12': .75rem, // 12px
     'font-size-14': .875rem, // 14px
     'font-size-16': 1rem, // 16px
@@ -115,20 +113,20 @@ $theme-font-size: (
 );
 
 $theme-font-weight: (
-  'dxp-light': (
-    'font-weight-lighter': lighter,
+  'dxp': (
+    'font-weighter': lighter,
     'font-weight-bold': bold,
     'font-weight-bolder': bolder,
     'font-weight-normal': normal
   ),
-  'vv-light': (
-    'font-weight-lighter': lighter,
+  'vv': (
+    'font-weighter': lighter,
     'font-weight-bold': bold,
     'font-weight-bolder': bolder,
     'font-weight-normal': normal
   ),
-  'ncl-light': (
-    'font-weight-lighter': lighter,
+  'ncl': (
+    'font-weighter': lighter,
     'font-weight-bold': bold,
     'font-weight-bolder': bolder,
     'font-weight-normal': normal

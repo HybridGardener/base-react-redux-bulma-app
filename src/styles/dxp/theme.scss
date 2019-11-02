@@ -1,0 +1,42 @@
+$theme-colors: (
+  'light': (
+    'text-color-primary': #3c3c3c,
+    'text-color-secondary': #777777,
+    'color-primary': #007aff,
+    'color-button-hover': #1f8aff,
+    'color-button-pressed': #005ec5,
+    'color-button-disabled': #090d12,
+    'color-success': #6ab11c,
+    'color-danger': #d0021b,
+    'color-white': #ffffff,
+    'color-grey-1': #eeeeee,
+    'color-grey-2': #f5f5f5,
+    'color-grey-3': #d8d8d8,
+    'color-grey-4': #757575,
+    'color-grey-5': #f8f9fa,
+    'color-grey-6': #bdc4cb,
+    'color-grey-7': #dadada,
+    'color-grey-8': #dbdbdb,
+    'color-red': #6ab11c
+  ),
+  $theme-font-family: (
+    'dxp': (
+      'font-family-primary': 'Roboto'
+    )
+  )
+    
+$theme-font-size: (
+    'dxp': (
+      'font-size-12': .75rem, // 12px
+      'font-size-14': .875rem, // 14px
+      'font-size-16': 1rem, // 16px
+      'font-size-18': 1.125rem, // 18px
+      'font-size-20': 1.25rem, // 20px
+      'font-size-22': 1.375rem, // 22px
+      'font-size-24': 1.5rem, // 24px
+      'font-size-34': 2.125rem, // 34px
+      'font-size-44': 2.75rem // 44px
+    ),
+)
+
+);

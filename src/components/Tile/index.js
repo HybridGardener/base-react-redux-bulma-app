@@ -2,7 +2,7 @@ import React from 'react'
 import { PropTypes } from 'prop-types'
 import { injectIntl, FormattedMessage } from 'react-intl'
 
-const Tile = ({ titleId, subtitleId, img, onClick, children }) => {
+const Tile = ({ titleId, subtitleId, img, onClick, children, brand }) => {
     return (
         <div className="tile is-parent" onClick={onClick}>
             <article className="tile is-child box">

@@ -1,7 +1,7 @@
 import React from 'react'
-import './style.scss';
-import Edit from '../../images/vv-light/edit.svg'
-const ListItem = ({ avatar, key, onClick, title, createdDate, complete }) => {
+import { getSVG } from '../../helpers/util'
+const ListItem = ({ brand, avatar, key, onClick, onEditClick, title, createdDate, complete }) => {
+    const Edit = getSVG(brand, 'edit');
     return (
         <article className="media card listItem" key={key} onClick={onClick}>
             <figure className="media-left">
@@ -18,7 +18,7 @@ const ListItem = ({ avatar, key, onClick, title, createdDate, complete }) => {
             </div>
             <div className="media-right">
                 <figure className="image is-24x24">
-                    <img alt="edit" src={Edit} />
+                    <img alt="edit" src={Edit} onClick={onEditClick} />
 
                 </figure>
             </div>
