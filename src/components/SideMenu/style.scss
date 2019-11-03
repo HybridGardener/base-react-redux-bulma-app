@@ -1,0 +1,6 @@
+.side-menu{
+    padding-left: 2em;
+    @include mixin-background-color('color-grey-4');
+    @include mixin-color('color-white');
+    height: 100%;
+}

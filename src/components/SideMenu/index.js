@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl'
+import './style.scss'
 const SideMenu = ({ title, menuItems, brand }) => {
     return (
         <div className="side-menu">

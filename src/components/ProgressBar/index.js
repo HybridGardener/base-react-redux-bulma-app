@@ -12,6 +12,6 @@ const ProgressBar = ({ name, id, value, min, max }) => {
 ProgressBar.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired
+    value: PropTypes.any
 }
 export default injectIntl(ProgressBar);

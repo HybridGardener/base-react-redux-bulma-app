@@ -37,6 +37,7 @@ import dxpLightRemoveItemIcon from './../images/dxp-light/remove.svg'
 import dxpLighteditItemIcon from './../images/dxp-light/edit.svg'
 import dxpLightLoaderItemIcon from './../images/dxp-light/loader.svg'
 import dxpLighttransitionItemIcon from './../images/dxp-light/transition.svg'
+import dxpLightPlaceholderItemIcon from './../images/dxp-light/placeholder.png'
 
 import dxpDarkalertsIcon from './../images/dxp-dark/alerts.svg'
 import dxpDarkcalendarIcon from './../images/dxp-dark/calendar.svg'
@@ -75,6 +76,8 @@ import dxpDarkRemoveItemIcon from './../images/dxp-dark/remove.svg'
 import dxpDarkeditItemIcon from './../images/dxp-dark/edit.svg'
 import dxpDarkLoaderItemIcon from './../images/dxp-dark/loader.svg'
 import dxpDarktransitionItemIcon from './../images/dxp-dark/transition.svg'
+import dxpDarkPlaceholderItemIcon from './../images/dxp-dark/placeholder.png'
+
 
 import vvLightalertsIcon from './../images/vv-light/alerts.svg'
 import vvLightcalendarIcon from './../images/vv-light/calendar.svg'
@@ -113,6 +116,8 @@ import vvLightRemoveItemIcon from './../images/vv-light/remove.svg'
 import vvLighteditItemIcon from './../images/vv-light/edit.svg'
 import vvLightLoaderItemIcon from './../images/vv-light/loader.gif'
 import vvLighttransitionItemIcon from './../images/vv-light/transition.svg'
+import vvLightPlaceholderItemIcon from './../images/vv-light/placeholder.png'
+
 
 import vvDarkalertsIcon from './../images/vv-dark/alerts.svg'
 import vvDarkcalendarIcon from './../images/vv-dark/calendar.svg'
@@ -151,6 +156,8 @@ import vvDarkRemoveItemIcon from './../images/vv-dark/remove.svg'
 import vvDarkeditItemIcon from './../images/vv-dark/edit.svg'
 import vvDarkLoaderItemIcon from './../images/vv-dark/loader.gif'
 import vvDarktransitionItemIcon from './../images/vv-dark/transition.svg'
+import vvDarkPlaceholderItemIcon from './../images/vv-dark/placeholder.png'
+
 
 import nclLightalertsIcon from './../images/ncl-light/alerts.svg'
 import nclLightcalendarIcon from './../images/ncl-light/calendar.svg'
@@ -189,6 +196,8 @@ import nclLightRemoveItemIcon from './../images/ncl-light/remove.svg'
 import nclLighteditItemIcon from './../images/ncl-light/edit.svg'
 import nclLightLoaderItemIcon from './../images/ncl-light/loader.svg'
 import nclLighttransitionItemIcon from './../images/ncl-light/transition.svg'
+import nclLightPlaceholderItemIcon from './../images/ncl-light/placeholder.png'
+
 
 import nclDarkalertsIcon from './../images/ncl-dark/alerts.svg'
 import nclDarkcalendarIcon from './../images/ncl-dark/calendar.svg'
@@ -227,6 +236,8 @@ import nclDarkeditItemIcon from './../images/ncl-dark/edit.svg'
 import nclDarkRemoveItemIcon from './../images/ncl-dark/remove.svg'
 import nclDarkLoaderItemIcon from './../images/ncl-dark/loader.svg'
 import nclDarktransitionItemIcon from './../images/ncl-dark/transition.svg'
+import nclDarkPlaceholderItemIcon from './../images/ncl-dark/placeholder.png'
+
 
 const icons = {}
 
@@ -269,6 +280,7 @@ icons['dxp-light'] = {
   edit: dxpLighteditItemIcon,
   loader: dxpLightLoaderItemIcon,
   transition: dxpLighttransitionItemIcon,
+  placeholder: dxpLightPlaceholderItemIcon,
 }
 
 icons['dxp-dark'] = {
@@ -309,6 +321,8 @@ icons['dxp-dark'] = {
   edit: dxpDarkeditItemIcon,
   loader: dxpDarkLoaderItemIcon,
   transition: dxpDarktransitionItemIcon,
+  placeholder: dxpDarkPlaceholderItemIcon
+
 }
 
 icons['vv-light'] = {
@@ -349,6 +363,8 @@ icons['vv-light'] = {
   edit: vvLighteditItemIcon,
   loader: vvLightLoaderItemIcon,
   transition: vvLighttransitionItemIcon,
+  placeholder: vvLightPlaceholderItemIcon,
+
 }
 
 
@@ -390,6 +406,7 @@ icons['vv-dark'] = {
   edit: vvDarkeditItemIcon,
   loader: vvDarkLoaderItemIcon,
   transition: vvDarktransitionItemIcon,
+  placeholder: vvDarkPlaceholderItemIcon
 
 }
 
@@ -432,6 +449,8 @@ icons['ncl-light'] = {
   edit: nclLighteditItemIcon,
   loader: nclLightLoaderItemIcon,
   transition: nclLighttransitionItemIcon,
+  placeholder: nclLightPlaceholderItemIcon
+
 }
 
 icons['ncl-dark'] = {
@@ -472,6 +491,8 @@ icons['ncl-dark'] = {
   edit: nclDarkeditItemIcon,
   loader: nclDarkLoaderItemIcon,
   transition: nclDarktransitionItemIcon,
+  placeholder: nclDarkPlaceholderItemIcon
+
 
 }
 
@@ -488,28 +509,17 @@ export const getMobileOperatingSystem = () => {
 export const isDescendant = (parent, child) => {
   var node = child.parentNode;
   while (node != null) {
-      if (node === parent) {
-          return true;
-      }
-      node = node.parentNode;
+    if (node === parent) {
+      return true;
+    }
+    node = node.parentNode;
   }
   return false;
 }
 
-export const getSVG = svg => {
-  const theme = 'vv-light' // document.getElementsByTagName("body")[0].classList[0] || 'dxp-light';
-  return icons[theme][svg]
-}
-
-export const trimUrl = (url = '') => {
-  if (url[url.length - 1] === "/") {
-    url = url.substring(0, url.length - 1)
-  }
-  if (url.lastIndexOf("/") > -1 && url.includes("http")) {
-    url = url.substring(url.indexOf("embarkation-admin-bff"))
-    return url.substring(url.indexOf("/"))
-  } else {
-    return url
-  }
+export const getSVG = (brandedTheme, svg) => {
+  const list = icons[brandedTheme];
+  const item = list[svg]
+  return item ? item : "";
 }
 

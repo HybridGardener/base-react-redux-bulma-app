@@ -1,4 +1,9 @@
 .tile {
-    @include mixin-font-weight('font-size-12');
-
+    &.is-parent{
+        @include mixin-font-weight('font-size-12');
+        min-width: 10em !important;
+        max-width: 24em;
+        min-height: 10em;
+    }
+  
 }

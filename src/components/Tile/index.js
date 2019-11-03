@@ -1,7 +1,7 @@
 import React from 'react'
 import { PropTypes } from 'prop-types'
 import { injectIntl, FormattedMessage } from 'react-intl'
-
+import './style.scss'
 const Tile = ({ titleId, subtitleId, img, onClick, children }) => {
     return (
         <div className="tile is-parent" onClick={onClick}>
