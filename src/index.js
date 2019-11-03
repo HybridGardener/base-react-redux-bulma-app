@@ -7,7 +7,7 @@ import { IntlProvider, addLocaleData } from 'react-intl'
 import './index.scss';
 import App from './App';
 import locale from './locale'
-import rootReducer from './rootReducer'
+import appReducer from './appReducer'
 import rootSaga from './rootSaga'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -20,7 +20,7 @@ const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
-    rootReducer,
+    appReducer,
     applyMiddleware(sagaMiddleware,
         logger));
 sagaMiddleware.run(rootSaga);

@@ -3,7 +3,7 @@
     padding:3em;
     position: relative;
     bottom:5em;
-    @include mixin-background-color('color-white');
+    background: transparent;
 @include mixin-color('text-color-primary');
   
 }

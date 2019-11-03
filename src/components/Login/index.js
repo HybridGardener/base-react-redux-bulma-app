@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import TextField from '../TextField'
 import { login } from '../../actions'
-import { getAuthenticating, getError } from '../../rootReducer'
+import { getAuthenticating, getError } from '../../appReducer'
 import './style.scss'
-import banner from '../../images/VV/banner.jpg'
-import mobileBanner from '../../images/VV/mobile-banner.jpg'
+import banner from '../../images/vv/banner.jpg'
+import mobileBanner from '../../images/vv/mobile-banner.jpg'
 
 const Login = ({ authenticating, handleLogin, error }) => {
     const [username, setUsername] = useState("");
@@ -28,7 +28,7 @@ const Login = ({ authenticating, handleLogin, error }) => {
                     </div>
                 </div>
             </div>
-            <div className="container login_card ">
+            <div className="container login_card">
                 <div className="columns is-variable is-mobile is-touch is-desktop ">
                     <div className="column is-third is-hidden-mobile"></div>
                     <div className="column box">
