@@ -5,7 +5,6 @@
 
 .RootContainer {
   width: 100% !important;
-  @include mixin-background-color('color-grey-2');
   .LayoutContainer {
     width: 100%;
     display: flex;
@@ -14,8 +13,5 @@
       width: 100%;
     }
   }
-  .footer{
-  @include mixin-background-color('color-grey-2');
-
-  }
+ 
 }

@@ -6,7 +6,7 @@
     width: 100%; /* Full-width */
     height: 2px; /* Specified height */
     border-radius: 5px;  
-    @include mixin-background-color('text-color-primary');
+    @include mixin-background-color('dxp','text-color-primary');
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -24,28 +24,26 @@
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    @include mixin-background-color('color-grey-2');
+    @include mixin-background-color('dxp','color-grey-2');
     border-radius: 50%; 
     cursor: pointer; /* Cursor on hover */
-    @include mixin-border('color-grey-4');
+    @include mixin-border('dxp','color-grey-4');
   }
   
   .slider::-moz-range-thumb {
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    @include mixin-background-color('color-grey-1');
+    @include mixin-background-color('dxp','color-grey-1');
     border-radius: 50%;
     cursor: pointer; /* Cursor on hover */
   }
   .valueDisplay{
-    @include mixin-color('text-color-primary');
-    @include mixin-background-color('color-white');
-    @include mixin-font-weight('font-size-12');
+    @include mixin-color('dxp','text-color-primary');
+    @include mixin-background-color('dxp','color-white');
+    @include mixin-font-weight('dxp','font-size-12');
     border-radius: 10px;
     width:30px;
     text-align: center;
     align-content: center;
     padding-top:.15em;
-
-
   }

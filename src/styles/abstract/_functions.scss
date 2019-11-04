@@ -1,26 +1,26 @@
-@function theme-color($customer: 'dxp-light', $key: 'color-primary') {
-  $map: map-get($theme-colors, $customer);
+@function theme-color( $brand:'dxp',$key: 'color-primary') {
+  $map: map-get($theme-colors, $brand);
   @return map-get($map, $key);
 }
 
-@function theme-background-color($customer: 'dxp-light', $key: 'color-primary') {
-  $map: map-get($theme-colors, $customer);
+@function theme-background-color($brand:'dxp', $key: 'color-primary') {
+  $map: map-get($theme-colors, $brand);
   @return map-get($map, $key);
 }
 
-@function theme-font-family($customer: 'dxp-light', $key: 'font-family-primary') {
-  $map: map-get($theme-font-family, $customer);
+@function theme-font-family( $brand:'dxp',$key: 'font-family-primary') {
+  $map: map-get($theme-font-family, $brand);
   @return map-get($map, $key);
 }
 
-@function theme-font-weight($customer: 'dxp-light', $key: 'font-weight-normal') {
-  $map: map-get($theme-font-weight, $customer);
+@function theme-font-weight($brand:'dxp', $key: 'font-weight-normal') {
+  $map: map-get($theme-font-weight, $brand);
   @return map-get($map, $key);
 }
 
-@function theme-font-size($customer: 'dxp-light', $key: 'font-size-14') {
-  $map: map-get($theme-font-size, $customer);
-  @return map-get($map, $key);
+@function theme-font-size($brand:'dxp', $key: 'font-size-14') {
+  $map: map-get($theme-font-size, $brand);
+  @return map-get($map,$key);
 }
 
 @function rem($pixels, $context: $unit) {

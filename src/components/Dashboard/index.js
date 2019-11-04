@@ -8,7 +8,6 @@ import { getSVG } from '../../helpers/util'
 
 const Dashboard = ({ title, brandedTheme }) => {
     const [sliderValue, setSliderValue] = useState(0);
-    console.log(brandedTheme);
     const avatar = getSVG(brandedTheme, 'placeholder');
     return (
         <div>

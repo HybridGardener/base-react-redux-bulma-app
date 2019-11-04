@@ -25,8 +25,11 @@ const store = createStore(
     applyMiddleware(sagaMiddleware,
         logger));
 sagaMiddleware.run(rootSaga);
-const brand = document.getElementsByTagName("body")[0].classList[0].split("-")[0];
+const brand = document.getElementsByTagName("body")[0].classList[0];
+const theme = document.getElementById('root').classList[0];
+
 store.dispatch(fetchBrandSucceeded(brand));
+store.dispatch(setTheme(theme));
 ReactDOM.render(
     <Provider store={store}>
         <IntlProvider locale="en" messages={locale.en} >

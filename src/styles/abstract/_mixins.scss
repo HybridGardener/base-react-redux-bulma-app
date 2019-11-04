@@ -32,114 +32,82 @@
   }
 }
 
-@mixin mixin-font-family($key) {
-  font-family: theme-font-family('dxp-light', $key);
-  .dxp-light & {
-    font-family: theme-font-family('dxp-light', $key);
-  }
-  .vv-light & {
-    font-family: theme-font-family('dxp-light', $key);
-  }
-  .ncl-light & {
-    font-family: theme-font-family('dxp-light', $key);
-  }
+@mixin mixin-font-family($brand,$key) {
+  font-family: theme-font-family($key,$brand);
+  
 }
 
 @mixin mixin-font-size($key) {
-  font-size: theme-font-size('dxp-light', $key);
-  .dxp-light & {
-    font-size: theme-font-size('dxp-light', $key);
-  }
-  .vv-light & {
-    font-size: theme-font-size('vv-light', $key);
-  }
-  .ncl-light & {
-    font-size: theme-font-size('ncl-light', $key);
-  }
+  font-size: theme-font-size( $key);
+ 
 }
 
-@mixin mixin-font-weight($key) {
-  font-weight: theme-font-weight('dxp-light', $key);
-  .dxp-light & {
-    font-weight: theme-font-weight('dxp-light', $key);
-  }
-  .vv-light & {
-    font-weight: theme-font-weight('vv-light', $key);
-  }
-  .ncl-light & {
-    font-weight: theme-font-weight('ncl-light', $key);
-  }
+@mixin mixin-font-weight($brand,$key) {
+  font-weight: theme-font-weight($brand,$key);
 }
 
-@mixin mixin-color($key) {
-  color: theme-color('dxp-light', $key);
-  .dxp-light & {
-    color: theme-color('dxp-light', $key);
-  }
-  .vv-light & {
-    color: theme-color('vv-light', $key);
-  }
-  .ncl-light & {
-    color: theme-color('ncl-light', $key);
-  }
+@mixin mixin-color($brand,$key) {
+  color: theme-color($brand,$key);
 }
 
-@mixin mixin-background-color($key) {
-  background-color: theme-background-color('dxp-light', $key);
-  .dxp-light & {
-    background-color: theme-background-color('dxp-light', $key);
-  }
-  .vv-light & {
-    background-color: theme-background-color('vv-light', $key);
-  }
-  .ncl-light & {
-    background-color: theme-background-color('ncl-light', $key);
-  }
+@mixin mixin-background-color($brand,$key) {
+  background-color: theme-background-color($brand,$key);
 }
 
 @mixin mixin-border($style: solid, $color: 'color-primary', $top: 1px, $right: 1px, $down: 1px, $left: 1px) {
   border-width: $top $right $down $left;
   border-style: $style;
-  border-color: theme-color('dxp-light', $color);
-  .dxp-light & {
+  border-color: theme-color('dxp', $color);
+  .dxp & {
     border-width: $top $right $down $left;
     border-style: $style;
-    border-color: theme-color('dxp-light', $color);
+    border-color: theme-color('dxp', $color);
   }
-  .vv-light & {
+  .vv & {
     border-width: $top $right $down $left;
     border-style: $style;
-    border-color: theme-color('vv-light', $color);
+    border-color: theme-color('vv', $color);
   }
-  .ncl-light & {
+  .vv & {
     border-width: $top $right $down $left;
     border-style: $style;
-    border-color: theme-color('ncl-light', $color);
+    border-color: theme-color('vv', $color);
+  }
+  .ncl & {
+    border-width: $top $right $down $left;
+    border-style: $style;
+    border-color: theme-color('ncl', $color);
   }
 }
 
 @mixin mixin-border-bottom-color($color: 'color-grey-1') {
-  border-bottom-color: theme-color('dxp-light', $color) !important;
-  .dxp-light & {
-    border-bottom-color: theme-color('dxp-light', $color) !important;
+  border-bottom-color: theme-color('dxp', $color) !important;
+  .dxp & {
+    border-bottom-color: theme-color('dxp', $color) !important;
   }
-  .vv-light & {
-    border-bottom-color: theme-color('dxp-light', $color) !important;
+  .vv & {
+    border-bottom-color: theme-color('dxp', $color) !important;
   }
-  .ncl-light & {
-    border-bottom-color: theme-color('dxp-light', $color) !important;
+  .vv & {
+    border-bottom-color: theme-color('dxp', $color) !important;
+  }
+  .ncl & {
+    border-bottom-color: theme-color('dxp', $color) !important;
   }
 }
 
 @mixin mixin-box-shadow($top, $right, $down, $left, $color-r: 0, $color-g: 0, $color-b: 0, $color-a: 0.5) {
   box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
-  .dxp-light & {
+  .dxp & {
     box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
   }
-  .vv-light & {
+  .vv & {
     box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
   }
-  .ncl-light & {
+  .vv & {
+    box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
+  }
+  .ncl & {
     box-shadow: $top $right $down $left rgba($color-r, $color-g, $color-b, $color-a);
   }
 }

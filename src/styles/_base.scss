@@ -1,9 +1,11 @@
 @import 'abstract/bulma';
-@import 'abstract/fonts';
-@import 'abstract/variables';
 @import 'abstract/functions';
+@import 'abstract/fonts';
 @import 'abstract/mixins';
 @import 'abstract/animations';
+@import "../../node_modules/bulma/bulma.sass";
+
+
 
 html {
   font-size: 14px;

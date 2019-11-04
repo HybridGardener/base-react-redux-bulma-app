@@ -1,13 +1,48 @@
+
 body {
   margin: 0;
   width: 100% !important;
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI","Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
-  @include mixin-background-color('color-grey-2');
-}
 
+  }
+
+  .dxp{
+    .dark{
+      @include mixin-background-color('dxp','color-grey-4');
+      @include mixin-color('dxp','color-white');
+    }
+    .light{
+      @include mixin-background-color('vv','color-grey-2');
+      @include mixin-color('dxp','text-color-primary');
+    }
+    
+
+  }
+  .vv{
+    .dark{
+      @include mixin-background-color('vv','color-grey-4');
+      @include mixin-color('vv','color-white');
+    }
+    .light{
+      @include mixin-background-color('vv','color-grey-2');
+      @include mixin-color('vv','text-color-primary');
+    }
+}
+.ncl{
+  .dark{
+    @include mixin-background-color('ncl','color-grey-4');
+    @include mixin-color('ncl','color-white');
+  }
+  .light{
+    @include mixin-background-color('ncl','color-grey-2');
+    @include mixin-color('ncl','text-color-primary');
+  }
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+

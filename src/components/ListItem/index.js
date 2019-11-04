@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss';
-import Edit from '../../images/vv-light/edit.svg'
+import Edit from '../../images/vv/edit.svg'
 const ListItem = ({ avatar, key, onClick, title, createdDate, complete }) => {
     return (
         <article className="media card listItem" key={key} onClick={onClick}>

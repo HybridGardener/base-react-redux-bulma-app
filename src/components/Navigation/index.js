@@ -6,9 +6,8 @@ import './style.scss'
 const Navigation = ({ title, hamburgerClick }) => {
     return (
         <nav className="nav navbar ">
-
             <div className="navbar-brand">
-                <span className="title is-light">{title}</span>
+                <span className="title">{title}</span>
                 <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" onClick={hamburgerClick}>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>

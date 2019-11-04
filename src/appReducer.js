@@ -1,4 +1,4 @@
-import { LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED } from "./actions"
+import { LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED, SET_THEME } from "./actions"
 const initialState = {
     brand: "dxp",
     theme: "light",
@@ -59,6 +59,10 @@ function reducer(state = initialState, action) {
                 error: null,
                 brand: action.brand
 
+            })
+        case SET_THEME:
+            return Object.assign({}, state, {
+                theme: action.theme
             })
         default:
             return state
