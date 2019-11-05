@@ -148,35 +148,39 @@ body {
   .vv{
     .dark{
 
-      @include mixin-color('vv','color-white');
+     progress{
+      @include mixin-color('vv','text-color-primary');
+      @include mixin-background-color('vv','text-color-primary');
+     }
       .app{
         background: black!important;
       }
       p{
-      @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
       }
       label{
-        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
       }
       h1{
-      @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
       }
       h2{
-      @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
       }
       h3{
-        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
       }
       .card{
-        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
 
         }
         .box{
-          @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
 
           }
       .login{
-        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
+     
 
       }
       .dashboard{
@@ -185,6 +189,10 @@ body {
       }
       span{
        
+      }
+      small{
+        @include mixin-color('vv','text-color-primary');
+
       }
       a{
        
@@ -231,6 +239,11 @@ body {
       
     }
     .light{
+      progress{
+        @include mixin-color('vv','text-color-primary');
+        @include mixin-background-color('vv','text-color-primary');
+  
+       }
       .app{
         background: lightgrey!important;
       }
@@ -280,6 +293,10 @@ body {
         @include mixin-color('vv','text-color-primary');
 
 
+        }
+        small{
+        @include mixin-color('vv','text-color-primary');
+          
         }
         .box{
           @include mixin-color('vv','color-grey-2');
