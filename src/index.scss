@@ -6,38 +6,393 @@ body {
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
 
+  .dxp{
+  .dark{
+    background: black !important;
+  }
+  .light{
+    background: grey!important;
+  }
+}
+.vv{
+  .dark{
+    background-color: black !important;
+  }
+  .light{
+    background-color: grey!important;
+  }
+}
+.ncl{
+  .dark{
+    background: black !important;
+  }
+  .light{
+    background: grey!important;
+  }
+}
+  }
+  .side-menu{
+    padding-left: 2em;
+    height: 100%;
+}
+.tile {
+  &.is-parent{
+      @include mixin-font-weight('dxp','font-size-12');
+      min-width: 10em !important;
+      max-width: 24em;
+      min-height: 10em;
   }
 
+}
   .dxp{
     .dark{
       @include mixin-background-color('dxp','color-grey-4');
       @include mixin-color('dxp','color-white');
+      p{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      h1{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      h2{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      h3{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      .login{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      .dashboard{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      span{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      a{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+      }
+      .navbar{
+        @include mixin-background-color('dxp','color-grey-4');
+        @include mixin-color('dxp','color-white');
+     
+      }
+
     }
     .light{
-      @include mixin-background-color('vv','color-grey-2');
+     
+      p{
       @include mixin-color('dxp','text-color-primary');
+     
+      }
+      label{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      h1{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      h2{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      h3{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      .login{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      .dashboard{
+      @include mixin-color('dxp','text-color-primary');
+     
+      }
+      span{
+        @include mixin-background-color('dxp','color-grey-3');
+      @include mixin-color('dxp','text-color-primary');
+      }
+      a{
+        @include mixin-background-color('dxp','color-grey-3');
+      @include mixin-color('dxp','text-color-primary');
+      }
+      .navbar{
+        @include mixin-background-color('dxp','color-grey-2');
+        @include mixin-color('dxp','text-color-primary');
+          }
+          .card{
+            @include mixin-background-color('vv','color-grey-3');
+    
+          }
+          .tile{
+            @include mixin-background-color('vv','color-grey-3');
+    
+          }
+          .box{
+            @include mixin-background-color('vv','color-grey-3');
+    
+          }
     }
     
 
   }
   .vv{
     .dark{
-      @include mixin-background-color('vv','color-grey-4');
+
       @include mixin-color('vv','color-white');
+      .app{
+        background: black!important;
+      }
+      p{
+      @include mixin-color('vv','color-white');
+      }
+      label{
+        @include mixin-color('vv','color-white');
+      }
+      h1{
+      @include mixin-color('vv','color-white');
+      }
+      h2{
+      @include mixin-color('vv','color-white');
+      }
+      h3{
+        @include mixin-color('vv','color-white');
+      }
+      .card{
+        @include mixin-color('vv','color-white');
+
+        }
+        .box{
+          @include mixin-color('vv','color-white');
+
+          }
+      .login{
+        @include mixin-color('vv','color-white');
+
+      }
+      .dashboard{
+        @include mixin-color('vv','text-color-primary');
+       
+      }
+      span{
+       
+      }
+      a{
+       
+        @include mixin-color('vv','text-color-secondary');
+
+      }
+      .title{
+        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
+
+      }
+      .subtitle{
+        @include mixin-color('vv','color-white');
+        @include mixin-color('vv','text-color-primary');
+
+      }
+      .navbar{
+        @include mixin-background-color('vv','color-primary');
+        @include mixin-color('vv','text-color-primary');
+        @include mixin-color('vv','color-white');
+      }
+      .side-menu{
+        @include mixin-background-color('vv','color-grey-4');
+        @include mixin-color('vv','text-color-primary');
+        @include mixin-color('vv','color-white');
+      }
+      .card{
+        @include mixin-background-color('vv','color-grey-3');
+        @include mixin-color('vv','text-color-primary');
+
+
+      }
+      .tile{
+        @include mixin-background-color('vv','color-grey-3');
+        @include mixin-color('vv','text-color-primary');
+
+
+      }
+      .box{
+        @include mixin-background-color('vv','color-grey-3');
+        @include mixin-color('vv','text-color-primary');
+
+      }
+      
     }
     .light{
-      @include mixin-background-color('vv','color-grey-2');
-      @include mixin-color('vv','text-color-primary');
+      .app{
+        background: lightgrey!important;
+      }
+      p{
+        @include mixin-color('vv','text-color-primary');
+      }
+      label{
+        @include mixin-color('vv','text-color-primary');
+      }
+      h1{
+        @include mixin-color('vv','text-color-primary');
+      }
+      h2{
+        @include mixin-color('vv','text-color-primary');
+      }
+      h3{
+        @include mixin-color('vv','text-color-primary');
+      }
+      .login{
+        @include mixin-color('vv','text-color-primary');
+      }
+      .dashboard{
+        @include mixin-color('vv','text-color-primary');
+      }
+      span{
+        @include mixin-color('vv','text-color-primary');
+  
+      }
+      a{
+        @include mixin-color('vv','text-color-primary');
+      }
+      .title{
+        @include mixin-color('vv','text-color-primary');
+      }
+      .subtitle{
+        @include mixin-color('vv','text-color-secondary');
+      }
+      .subtitle{
+        @include mixin-color('vv','text-color-secondary');
+      }
+      .navbar{
+        @include mixin-background-color('vv','color-primary');
+        @include mixin-color('vv','text-color-primary');
+      }
+      .card{
+        @include mixin-color('vv','color-grey-2');
+        @include mixin-color('vv','text-color-primary');
+
+
+        }
+        .box{
+          @include mixin-color('vv','color-grey-2');
+          @include mixin-color('vv','text-color-primary');
+
+          }
+          .side-menu{
+            @include mixin-background-color('vv','color-grey-3');
+            @include mixin-color('vv','text-color-primary');
+  
+          }
+     
     }
 }
 .ncl{
   .dark{
     @include mixin-background-color('ncl','color-grey-4');
     @include mixin-color('ncl','color-white');
+      p{
+        @include mixin-background-color('ncl','color-grey-4');
+        @include mixin-color('ncl','color-white'); 
+    }
+    label{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white'); 
+  }
+    h1{
+      @include mixin-background-color('ncl','color-grey-4');
+    @include mixin-color('ncl','color-white');
+    }
+    h2{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
+    h3{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
+    .login{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
+    .dashboard{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
+    span{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    
+    }
+    a{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    
+    }
+    .title{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
+    .navbar{
+      @include mixin-background-color('ncl','color-grey-4');
+      @include mixin-color('ncl','color-white');
+    }
   }
   .light{
     @include mixin-background-color('ncl','color-grey-2');
     @include mixin-color('ncl','text-color-primary');
+    p{
+      @include mixin-background-color('ncl','color-grey-2');
+    @include mixin-color('ncl','text-color-primary');
+    }
+    label{
+      @include mixin-background-color('ncl','color-grey-2');
+    @include mixin-color('ncl','text-color-primary');
+    }
+    h1{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    h2{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    h3{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    .login{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    .dashboard{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    span{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    a{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    
+    }
+    .title{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
+    .navbar{
+      @include mixin-background-color('ncl','color-grey-2');
+      @include mixin-color('ncl','text-color-primary');
+    }
   }
 }
 code {

@@ -1,5 +1,4 @@
 import React from 'react'
-import './style.scss'
 const CountCard = ({ count, subtext, handleClick }) => {
     return (
         <div className="tile is-parent countCard" onClick={handleClick}>

@@ -10,7 +10,7 @@ const Dashboard = ({ title, brandedTheme }) => {
     const [sliderValue, setSliderValue] = useState(0);
     const avatar = getSVG(brandedTheme, 'placeholder');
     return (
-        <div>
+        <div className="dashboard">
             <div className="box">
                 <div className="columns is-multiline is-mobile is-touch is-desktop">
                     <div className="column">

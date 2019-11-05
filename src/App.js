@@ -26,7 +26,7 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme }) {
   if (!isUserLoggedIn) return <Login />
   if (loading) return <h1>Loading..</h1>
   return (
-    <div>
+    <div className="app">
       <div className="columns is-variable is-mobile is-desktop is-multiline ">
         <div className="column is-full">
           <Navigation title={`${brand.toUpperCase()} Module`} />
