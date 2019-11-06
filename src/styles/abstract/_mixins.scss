@@ -31,9 +31,14 @@
     font-style: $style;
   }
 }
-
+@mixin primary-color($key){
+  color: primary-color($key)!important;
+}
+@mixin primary-background-color($key){
+  background-color: primary-color($key)!important;
+}
 @mixin mixin-font-family($brand,$key) {
-  font-family: theme-font-family($key,$brand);
+  font-family: theme-font-family($key,$brand)!important;
   
 }
 

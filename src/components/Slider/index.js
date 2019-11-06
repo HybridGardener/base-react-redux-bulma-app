@@ -1,7 +1,6 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import { PropTypes } from 'prop-types'
-import './style.scss'
 
 
 const Slider = ({ min, max, step, id, name, onChange, value }) => {
@@ -11,7 +10,7 @@ const Slider = ({ min, max, step, id, name, onChange, value }) => {
                 <div className="tags has-addons">
                     <span className="tag is-light is-medium">
                         <FormattedMessage id={id} /></span>
-                    <span className="tag is-dark is-medium">{value}</span>
+                    <span className="tag is-primary is-medium">{value}</span>
                 </div>
                 <input min={min}
                     max={max}

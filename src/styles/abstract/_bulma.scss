@@ -2,7 +2,6 @@
 @import "./../../../node_modules/bulma/sass/utilities/_all.sass";
 
 $modal-content-width: 750px;
-
 $theme-colors: (
   'dxp': (
     'text-color-primary': #3c3c3c,
@@ -65,6 +64,13 @@ $theme-colors: (
     'color-red': #6ab11c,
   ),
 );
+
+$color-primary:(
+    'dxp': #007aff,
+    'vv': #d0021b,
+    'ncl':#00f0b4,
+);
+
 $theme-font-family: (
   'dxp': (
     'font-family-primary': 'Roboto'

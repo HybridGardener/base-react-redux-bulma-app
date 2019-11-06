@@ -1,3 +1,7 @@
+@function primary-color( $key:'dxp') {
+  @return map-get($color-primary, $key);
+}
+
 @function theme-color( $brand:'dxp',$key: 'color-primary') {
   $map: map-get($theme-colors, $brand);
   @return map-get($map, $key);

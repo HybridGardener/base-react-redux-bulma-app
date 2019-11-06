@@ -10,10 +10,10 @@ const Dashboard = ({ title, brandedTheme }) => {
     const [sliderValue, setSliderValue] = useState(0);
     const avatar = getSVG(brandedTheme, 'placeholder');
     return (
-        <div className="dashboard">
-            <div className="box">
+        <div className="dashboard columns is-multiline is-mobile is-touch is-desktop is-2">
+            <div className="column is-full">
                 <div className="columns is-multiline is-mobile is-touch is-desktop">
-                    <div className="column">
+                    <div className="column is-quarter">
                         <Tile titleId="dashboard.tile1Title" subtitleId="dashboard.tile1Subtitle">
                             <Slider step={1}
                                 min={0}
@@ -25,7 +25,7 @@ const Dashboard = ({ title, brandedTheme }) => {
                             />
                         </Tile>
                     </div>
-                    <div className="column">
+                    <div className="column is-quarter">
                         <Tile titleId="dashboard.tile2Title"
                             subtitleId="dashboard.tile2Subtitle">
                             <ProgressBar min={0}
@@ -37,18 +37,18 @@ const Dashboard = ({ title, brandedTheme }) => {
                             />
                         </Tile>
                     </div>
-                    <div className="column">
+                    <div className="column is-quarter">
                         <Tile titleId="dashboard.tile3Title" subtitleId="dashboard.tile3Subtitle">
                         </Tile>
                     </div>
-                    <div className="column">
+                    <div className="column is-quarter">
                         <Tile titleId="dashboard.tile4Title" subtitleId="dashboard.tile4Subtitle">
 
                         </Tile>
                     </div>
                 </div>
             </div>
-            <div className="box">
+            <div className="column list-view is-full">
                 <ListItem avatar={avatar} title={"Clean out basement"} createdDate={"10/21/2019 02:11:01"} complete={true} name="p1" />
                 <ListItem avatar={avatar} title={"Mow the Lawn"} createdDate={"10/21/2019 02:11:01"} complete={false} name="p2" />
                 <ListItem avatar={avatar} title={"Pay Rent"} createdDate={"10/21/2019 02:11:01"} complete={true} name="p3" />
