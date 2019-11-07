@@ -12,13 +12,7 @@ body {
   }
   
 
-
-
-
-
-
-
-  input {
+  input[type=range] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   background: transparent; /* Otherwise white in Chrome */
   height: 2.3em;
@@ -31,14 +25,21 @@ body {
     &:focus{ 
       outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
     }
+    &:hover{ outline: none;}
   }
 
 
   .side-menu{
-    padding: 2em;
+    margin-right: 2em;
+    padding: 1em;
     height: 100%;
 }
-
+.nav{
+  width: 100% !important;
+  padding:2em;
+  margin:0;
+ 
+}
 
 .switch{
 
@@ -73,7 +74,7 @@ body {
   }
   
   input:checked + label {
-    @include primary-color('vv');
+    @include mixin-primary-color('vv');
   }
   
   input:checked + label:after {
@@ -106,8 +107,8 @@ body {
     .dark{
      
      progress{
-      @include primary-color('vv');
-      @include primary-background-color('vv');
+      @include mixin-primary-color('vv');
+      @include mixin-primary-background-color('vv');
      }
      .app{
       @include mixin-background-color('vv','color-grey-4'); 
@@ -179,18 +180,25 @@ body {
 
       }
       .navbar{
-        @include primary-background-color('vv');
+        @include mixin-primary-background-color('vv');
         @include mixin-color('vv','text-color-primary');
+         box-shadow: 2px 2px 3px black;
+        figure{
+          margin-bottom:10px;
+         }
       }
       .side-menu{
         background-color: $black;
         color:$white;
+        box-shadow:  4px 4px 5px rgb(31, 28, 28);
       }
       .list-view{
         background-color: transparent;
         border: none;
         .listItem{
           margin-right:2em!important;
+          padding:2em;
+      
           .title{
             @include mixin-color('vv','text-color-primary');
 
@@ -203,10 +211,10 @@ body {
       
     }
     .light{
-      @include primary-color('vv');
+      @include mixin-primary-color('vv');
 
       progress{
-        @include primary-color('vv');
+        @include mixin-primary-color('vv');
        }
       
       .app{
@@ -276,6 +284,7 @@ body {
           .side-menu{
             @include mixin-background-color('vv','color-white');
             @include mixin-color('vv','text-color-primary');
+            box-shadow:  4px 4px 5px grey;
   
           }
           .login{
@@ -290,6 +299,10 @@ body {
           .navbar{
             @include mixin-background-color('vv','color-primary');
             @include mixin-color('vv','text-color-primary');
+            box-shadow: 2px 2px 3px grey;
+          figure{
+           margin-bottom:10px;
+          }
           }
           .list-view{
             background-color: transparent;
@@ -298,6 +311,7 @@ body {
               @include mixin-background-color('vv','color-white');
               @include mixin-color('vv','text-color-primary');
               padding:2em;
+              margin-right:2em!important;
       
                 }
           }

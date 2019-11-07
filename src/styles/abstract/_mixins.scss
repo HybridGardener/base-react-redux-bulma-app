@@ -31,10 +31,10 @@
     font-style: $style;
   }
 }
-@mixin primary-color($key){
+@mixin mixin-primary-color($key){
   color: primary-color($key)!important;
 }
-@mixin primary-background-color($key){
+@mixin mixin-primary-background-color($key){
   background-color: primary-color($key)!important;
 }
 @mixin mixin-font-family($brand,$key) {
@@ -48,7 +48,7 @@
   height:.1em;
   cursor: pointer;
   background:rgb(80, 78, 78);
-  
+    
 
  }
  @mixin thumb() {

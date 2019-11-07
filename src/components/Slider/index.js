@@ -29,6 +29,6 @@ Slider.propTypes = {
     step: PropTypes.number.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.number
+    value: PropTypes.any
 }
 export default injectIntl(Slider);

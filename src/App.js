@@ -9,7 +9,9 @@ import Navigation from './components/Navigation';
 import SideMenu from './components/SideMenu';
 import { setTheme } from './actions';
 
+
 function App({ isUserLoggedIn, loading, brand, changeTheme, theme }) {
+  const brandIcon = require(`./images/${brand}/emblem.png`)
   const [lightDark, setLightDark] = useState("light");
   function handleThemeChange(e) {
     const val = e.target.checked ? 'dark' : 'light';
@@ -29,7 +31,7 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme }) {
     <div className="app">
       <div className="columns is-variable is-mobile is-desktop is-multiline is-gapless">
         <div className="column is-full">
-          <Navigation title={`${brand.toUpperCase()} Module`} />
+          <Navigation title={`${brand.toUpperCase()} Module`} icon={brandIcon} />
         </div>
         <div className="column is-one-quarter-desktop is-one-third-touch is-hidden-mobile ">
           <SideMenu title={"Module Side Menu"} checked={theme == "dark"} themeCheckedState={lightDark} onThemeChanged={(e) => handleThemeChange(e)} />
