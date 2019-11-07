@@ -42,6 +42,31 @@
   
 }
 
+@mixin track() {
+  background-color: black;
+  width: 100%;
+  height:.1em;
+  cursor: pointer;
+  background:rgb(80, 78, 78);
+  
+
+ }
+ @mixin thumb() {
+  margin-top:-10px;
+  width: 1.5em; /* Set a specific slider handle width */
+  height: 1.5em; /* Slider handle height */
+  background-color: lightgray;
+  border:1px solid black;
+  box-shadow: rgb(56, 51, 51);
+  border-radius: 50%;
+  cursor: pointer; /* Cursor on hover */
+  border:1px solid black;
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  box-shadow: rgb(56, 51, 51);
+ }
+
+
 @mixin mixin-font-size($key) {
   font-size: theme-font-size( $key);
  
