@@ -187,6 +187,19 @@ body {
           margin-bottom:10px;
          }
       }
+      .mobile-menu{
+        width: 100%;
+        height: 100%;
+        margin: 3px;
+        @include mixin-background-color('vv','color-primary');
+        button{
+        @include mixin-background-color('vv','color-primary');
+        @include mixin-color('vv','color-white');
+                
+
+        }
+
+      }
       .side-menu{
         background-color: $black;
         color:$white;
@@ -280,7 +293,19 @@ body {
           @include mixin-color('vv','text-color-primary');
 
           }
-        
+        .mobile-menu{
+          width: 100%;
+          height: 100%;
+          margin: 3px;
+          @include mixin-background-color('vv','color-primary');
+          button{
+          @include mixin-background-color('vv','color-primary');
+          @include mixin-color('vv','color-white');
+                  
+
+          }
+
+        }
           .side-menu{
             @include mixin-background-color('vv','color-white');
             @include mixin-color('vv','text-color-primary');

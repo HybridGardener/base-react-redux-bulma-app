@@ -8,6 +8,7 @@ import { getIsUserLoggedIn, getLoading, getBrand, getTheme } from './appReducer'
 import Navigation from './components/Navigation';
 import SideMenu from './components/SideMenu';
 import { setTheme } from './actions';
+import MobileMenu from './components/MobileMenu';
 
 
 function App({ isUserLoggedIn, loading, brand, changeTheme, theme }) {
@@ -29,12 +30,13 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme }) {
   if (loading) return <h1>Loading..</h1>
   return (
     <div className="app">
+
       <div className="columns is-variable is-mobile is-desktop is-multiline is-gapless">
         <div className="column is-full">
           <Navigation title={`${brand.toUpperCase()} Module`} icon={brandIcon} />
         </div>
-        <div className="column is-one-quarter-desktop is-one-third-touch is-hidden-mobile ">
-          <SideMenu title={"Module Side Menu"} checked={theme == "dark"} themeCheckedState={lightDark} onThemeChanged={(e) => handleThemeChange(e)} />
+        <div className="column is-one-quarter-desktop is-one-third-touch is-hidden-mobile">
+          <SideMenu title={"Side Menu"} checked={theme == "dark"} themeCheckedState={lightDark} onThemeChanged={(e) => handleThemeChange(e)} />
         </div>
         <div className="column is-three-quarters-desktop is-full-mobile">
           <div className="card">

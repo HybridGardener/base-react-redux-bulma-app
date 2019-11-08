@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl'
 import Switch from '../Switch';
+import Menu from '../Menu';
 const SideMenu = ({ title, menuItems, brand, onThemeChanged, themeCheckedState }) => {
     return (
         <div className="side-menu">
@@ -10,6 +11,9 @@ const SideMenu = ({ title, menuItems, brand, onThemeChanged, themeCheckedState }
                     <div className="columns is-multiline">
                         <div className="column is-centered is-three-quarters">
                             <Switch handleSwitch={onThemeChanged} checked={themeCheckedState} />
+                        </div>
+                        <div className="column is-centered is-three-quarters">
+                            <Menu />
                         </div>
                     </div>
                 </div>
