@@ -1,14 +1,33 @@
 import { put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND } from './actions';
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed } from './actions';
 import { BASE_URL, PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 
 export default function* rootSaga() {
     yield takeLatest(LOAD_MODULE, loadModuleSaga);
     yield takeLatest(LOGIN, loginSaga);
+    yield takeLatest(FETCH_USERS, fetchUsersSaga);
+    yield takeLatest(FETCH_MY_MESSAGES, fetchMyMessagesSaga);
     yield put(loadModule());
+    yield put(fetchUsers());
 }
 
+export function* fetchUsersSaga(action) {
+    try {
+        const users = axios.get('http://localhost:8081/listUsers');
+        yield put(fetchUsersSucceeded(users));
+    } catch (error) {
+        yield put(fetchUsersFailed(error))
+    }
+}
+export function* fetchMyMessagesSaga(action) {
+    try {
+        const me = action.me;
+
+    } catch (error) {
+
+    }
+}
 export function* loadModuleSaga() {
     try {
         /*   

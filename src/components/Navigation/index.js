@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { injectIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import './style.scss'
-import MobileMenu from '../MobileMenu'
-const Navigation = ({ title, icon }) => {
+import Menu from '../Menu'
+const Navigation = ({ title, icon, iconClick }) => {
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerClick = () => {
         const val = isOpen ? false : true;
@@ -14,9 +14,11 @@ const Navigation = ({ title, icon }) => {
         <nav className="nav navbar ">
             <div className="navbar-start">
                 <div className="navbar-brand">
-                    <figure className="image is-96x96">
-                        <img src={icon} alt="icon" />
-                    </figure>
+                    <Link to="/">
+                        <figure className="image is-96x96">
+                            <img src={icon} alt="icon" onClick={iconClick} />
+                        </figure>
+                    </Link>
                 </div>
             </div>
 
@@ -28,7 +30,7 @@ const Navigation = ({ title, icon }) => {
                 </a>
             </div>
             {isOpen ?
-                <MobileMenu />
+                <Menu className="mobile-menu is-mobile is-hidden-touch" />
                 : ""
             }
 

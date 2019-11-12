@@ -7,6 +7,101 @@ body {
   sans-serif;
 
   }
+
+
+  .chat {
+    width: 300px;
+    border: solid 1px #EEE;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .yours {
+    align-items: flex-start;
+  }
+  
+  .yours .message {
+    margin-right: 25%;
+    background-color: #eee;
+    position: relative;
+  }
+  
+  .yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #eee;
+    border-bottom-right-radius: 15px;
+  }
+  .yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .mine {
+    align-items: flex-end;
+  }
+  
+  .mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  
+  .mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+  }
+  
+  .mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: white;
+    border-bottom-left-radius: 10px;
+  }
+  
+
   input[type=range]:hover {
     opacity: 1; /* Fully shown on mouse-over */
   }
@@ -27,12 +122,11 @@ body {
     }
     &:hover{ outline: none;}
   }
-
-
   .side-menu{
     margin-right: 2em;
     padding: 1em;
     height: 100%;
+    min-height: 800px;
 }
 .nav{
   width: 100% !important;
@@ -89,8 +183,6 @@ body {
   }
   }
 
-
-
 .tile {
   &.is-parent{
       min-width: 10em !important;
@@ -100,16 +192,33 @@ body {
         background-color: transparent;
       }
   }
-
 }
  
   .vv{
     .dark{
-     
+      .create{
+        margin-left:3em;
+        margin-right:3em;
+        background-color: transparent!important;
+        .box{
+          @include mixin-background-color('vv','color-grey-2'); 
+          @include mixin-color('vv','text-color-primary');
+        }
+      }
+      .messenger{
+        margin-left:3em;
+        margin-right:3em;
+        background-color: transparent!important;
+        .box{
+          @include mixin-background-color('vv','color-grey-2'); 
+          @include mixin-color('vv','text-color-primary');
+        }
+      }
      progress{
       @include mixin-primary-color('vv');
       @include mixin-primary-background-color('vv');
      }
+   
      .app{
       @include mixin-background-color('vv','color-grey-4'); 
   }
@@ -133,6 +242,7 @@ body {
         @include mixin-color('vv','color-white');
 
       }
+     
       .dashboard{
         
         @include mixin-color('vv','text-color-primary');
@@ -148,6 +258,7 @@ body {
         @include mixin-color('vv','text-color-primary');
 
       }
+    
       a{
        
         @include mixin-color('vv','text-color-secondary');
@@ -187,23 +298,15 @@ body {
           margin-bottom:10px;
          }
       }
-      .mobile-menu{
-        width: 100%;
-        height: 100%;
-        margin: 3px;
-        @include mixin-background-color('vv','color-primary');
-        button{
-        @include mixin-background-color('vv','color-primary');
-        @include mixin-color('vv','color-white');
-                
-
-        }
-
-      }
+     
       .side-menu{
         background-color: $black;
         color:$white;
         box-shadow:  4px 4px 5px rgb(31, 28, 28);
+        strong{
+          @include mixin-color('vv','color-white');
+        }
+       
       }
       .list-view{
         background-color: transparent;
@@ -222,10 +325,28 @@ body {
         }
       }
       
+   
     }
     .light{
       @include mixin-primary-color('vv');
-
+      .create{
+        margin-left:3em;
+        margin-right:3em;
+        background-color: transparent!important;
+        .box{
+          @include mixin-background-color('vv','color-grey-2'); 
+          @include mixin-color('vv','text-color-primary');
+        }
+      }
+      .messenger{
+        margin-left:3em;
+        margin-right:3em;
+        background-color: transparent!important;
+        .box{
+          @include mixin-background-color('vv','color-grey-2'); 
+          @include mixin-color('vv','text-color-primary');
+        }
+      }
       progress{
         @include mixin-primary-color('vv');
        }
@@ -293,19 +414,7 @@ body {
           @include mixin-color('vv','text-color-primary');
 
           }
-        .mobile-menu{
-          width: 100%;
-          height: 100%;
-          margin: 3px;
-          @include mixin-background-color('vv','color-primary');
-          button{
-          @include mixin-background-color('vv','color-primary');
-          @include mixin-color('vv','color-white');
-                  
-
-          }
-
-        }
+    
           .side-menu{
             @include mixin-background-color('vv','color-white');
             @include mixin-color('vv','text-color-primary');
@@ -315,6 +424,7 @@ body {
           .login{
             @include mixin-color('vv','text-color-primary');
           }
+       
           .dashboard{
           @include mixin-color('vv','text-color-primary');
           @include mixin-background-color('vv','color-grey-1');

@@ -34,7 +34,7 @@ ReactDOM.render(
     <Provider store={store}>
         <IntlProvider locale="en" messages={locale.en} >
             <BrowserRouter history={history}>
-                <App />
+                <App history={history} />
             </BrowserRouter>
         </IntlProvider>
     </Provider>

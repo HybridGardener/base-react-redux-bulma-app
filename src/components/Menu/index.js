@@ -1,17 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+function handleMessagesClick() {
 
+}
 const Menu = () => {
     return (
-        <div className="menu columns is-multiline is-hidden-mobile ">
-            <div className="column ">
-                <Link className="button is-inverted is-outlined is-large" to="/create">Create</Link>
-            </div>
-            <div className="column ">
-                <Link className="button is-inverted is-outlined  is-large" to="/history">History</Link>
+        <div className="columns is-multiline has-text-centered">
+            <div className="column">
+                <Link to="/create"><strong>Create</strong></Link>
             </div>
             <div className="column">
-                <Link className="button is-inverted is-outlined  is-large" to="/users">Users</Link>
+                <Link to="/history"><strong>History</strong></Link>
+            </div>
+            <div className="column">
+                <Link to="/users"><strong>Users</strong></Link>
+            </div>
+            <div className="column">
+                <Link to="/messages">
+
+                    <i className="fas fa-envelope" ></i>
+
+                </Link>
             </div>
         </div>
     )
