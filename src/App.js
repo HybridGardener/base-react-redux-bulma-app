@@ -4,7 +4,7 @@ import { injectIntl } from 'react-intl'
 import { Switch, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import { getIsUserLoggedIn, getLoading, getBrand, getTheme } from './appReducer';
+import { getIsUserLoggedIn, getLoading, getBrand, getTheme, getUser } from './appReducer';
 import Navigation from './components/Navigation';
 import SideMenu from './components/SideMenu';
 import { setTheme } from './actions';
@@ -12,7 +12,7 @@ import Create from './components/Create';
 import Messenger from './components/Messenger';
 
 
-function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history }) {
+function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, currentUser }) {
   const brandIcon = require(`./images/${brand}/emblem.png`)
   const [lightDark, setLightDark] = useState("light");
   function handleIconClick() {
@@ -46,7 +46,7 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history }) {
           <Switch>
             <Route exact path="/" render={() => <Dashboard title="Dashboard" brandedTheme={brand} />} />
             <Route path="/create" render={() => <Create />} />
-            <Route path="/messages" render={() => <Messenger />} />
+            <Route path="/messages" render={() => <Messenger selectedUser="james1234" me={currentUser} />} />
           </Switch>
         </div>
       </div>
@@ -63,7 +63,8 @@ const mapStateToProps = (state) => {
     isUserLoggedIn: getIsUserLoggedIn(state),
     loading: getLoading(state),
     brand: getBrand(state),
-    theme: getTheme(state)
+    theme: getTheme(state),
+    currentUser: getUser(state)
   }
 }
 const mapDispatchToProps = (dispatch) => {

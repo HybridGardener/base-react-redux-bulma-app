@@ -1,20 +1,22 @@
 import React from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
+import { FormattedMessage, injectIntl } from 'react-intl'
 import { PropTypes } from 'prop-types'
 import Messages from '../Messages';
+import { getMessages } from '../../appReducer';
 
-const Messenger = ({ availableUsers,selectedUser,currentThread }) => {
+
+const Messenger = ({ availableUsers, selectedUser, currentThread, messages }) => {
     return (
         <div className="messenger columns is-multiline">
             <div className="column is-centered is-full box">
                 <div className="columns is-multiline">
                     <div className="column is-quarter ">
-                        <span className="button is-large icon"><i class="fas fa-cogs"></i></span>
+                        <span className="button is-large icon"><i className="fas fa-cogs"></i></span>
                     </div>
                     <div className="column is-quarter">
                         <span className="button is-large icon" >
-                            <i class="fas fa-comments"></i>
+                            <i className="fas fa-comments"></i>
                         </span>
                     </div>
                     <div className="column is-quarter">
@@ -27,7 +29,7 @@ const Messenger = ({ availableUsers,selectedUser,currentThread }) => {
                     <div className="column is-full">
                         <div className="columns is-multiline">
                             <div className="column is-full">
-                                <Messages Messages={currentThread} sendToUser={selectedUser}/>
+                                <Messages messages={messages} sendToUser={selectedUser} />
                             </div>
                         </div>
                     </div>
@@ -38,7 +40,7 @@ const Messenger = ({ availableUsers,selectedUser,currentThread }) => {
 }
 const mapStateToProps = (state) => {
     return {
-        chatWindows: state.chatWindows
+        messages: getMessages(state)
     }
 }
 export default connect(mapStateToProps, null)(Messenger)

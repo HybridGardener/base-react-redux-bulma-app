@@ -7,12 +7,29 @@ const initialState = {
     authenticating: false,
     isUserLoggedIn: false,
     userProfile: {
-        username: "",
+        username: "hybridcoder",
         password: "",
         preferredLanguage: "",
         accessToken: ""
     },
-    myMessages: [],
+    currentThread: [
+        {
+            id: "12345",
+            thread_id: "1212",
+            from: "james123",
+            to: "hybridcoder",
+            message: "testing the new message framework",
+            created_date: "11/12/2019 15:02:00"
+        },
+        {
+            id: "4jr8w",
+            thread_id: "1212",
+            from: "hybridcoder",
+            to: "james123",
+            message: "testing the new message framework",
+            created_date: "11/12/2019 15:02:00"
+        }
+    ],
 
 }
 function reducer(state = initialState, action) {
@@ -81,22 +98,22 @@ function reducer(state = initialState, action) {
                 loading: false,
                 error: null
             })
-            case FETCH_MY_MESSAGES:
-                    return Object.assign({}, state, {
-                        loading: true
-                    })
-                case FETCH_MY_MESSAGES_FAILED:
-                    return Object.assign({}, state, {
-                        loading: false,
-                        error: action.error
-        
-                    })
-                case FETCH_MY_MESSAGES_SUCCEEDED:
-                    return Object.assign({}, state, {
-                        loading: false,
-                        error: null,
-                        myMessages:action.messages
-                    })
+        case FETCH_MY_MESSAGES:
+            return Object.assign({}, state, {
+                loading: true
+            })
+        case FETCH_MY_MESSAGES_FAILED:
+            return Object.assign({}, state, {
+                loading: false,
+                error: action.error
+
+            })
+        case FETCH_MY_MESSAGES_SUCCEEDED:
+            return Object.assign({}, state, {
+                loading: false,
+                error: null,
+                myMessages: action.messages
+            })
         default:
             return state
     }
@@ -108,4 +125,6 @@ export const getError = state => state.error;
 export const getLoading = state => state.loading;
 export const getBrand = state => state.brand;
 export const getTheme = state => state.theme;
+export const getUser = state => state.userProfile.username;
+export const getMessages = state => state.currentThread;
 export default reducer;
