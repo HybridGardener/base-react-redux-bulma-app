@@ -12,11 +12,12 @@ const initialState = {
         preferredLanguage: "",
         accessToken: ""
     },
+    messageReceiver: "james1234",
     currentThread: [
         {
             id: "12345",
             thread_id: "1212",
-            from: "james123",
+            from: "james1234",
             to: "hybridcoder",
             message: "testing the new message framework",
             created_date: "11/12/2019 15:02:00"
@@ -25,8 +26,8 @@ const initialState = {
             id: "4jr8w",
             thread_id: "1212",
             from: "hybridcoder",
-            to: "james123",
-            message: "testing the new message framework",
+            to: "james1234",
+            message: "testing reply",
             created_date: "11/12/2019 15:02:00"
         }
     ],
@@ -127,4 +128,5 @@ export const getBrand = state => state.brand;
 export const getTheme = state => state.theme;
 export const getUser = state => state.userProfile.username;
 export const getMessages = state => state.currentThread;
+export const getMessageReceiver = state => state.messageReceiver
 export default reducer;

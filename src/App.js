@@ -46,7 +46,7 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, curr
           <Switch>
             <Route exact path="/" render={() => <Dashboard title="Dashboard" brandedTheme={brand} />} />
             <Route path="/create" render={() => <Create />} />
-            <Route path="/messages" render={() => <Messenger selectedUser="james1234" me={currentUser} />} />
+            <Route path="/messages" render={() => <Messenger />} />
           </Switch>
         </div>
       </div>
