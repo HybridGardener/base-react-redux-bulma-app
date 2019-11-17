@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Message = ({ message, isMe }) => {
+const Message = ({ message, isMe, opened, createdDate, openedDate }) => {
     const style = `${isMe ? "mine" : "yours"} messages`;
     return (
         <div className={style}>
             <div className="message">
-                <p>{message}</p>
+                <p><strong>{message}</strong></p>
+                <p><small>{openedDate}</small></p>
             </div>
         </div>
     )

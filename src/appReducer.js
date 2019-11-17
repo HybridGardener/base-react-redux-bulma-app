@@ -1,4 +1,4 @@
-import { LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED, SET_THEME, FETCH_USERS, FETCH_USERS_SUCCEEDED, FETCH_USERS_FAILED, FETCH_MY_MESSAGES, FETCH_MY_MESSAGES_FAILED, FETCH_MY_MESSAGES_SUCCEEDED } from "./actions"
+import { LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED, SET_THEME, FETCH_USERS, FETCH_USERS_SUCCEEDED, FETCH_USERS_FAILED, FETCH_MY_MESSAGES, FETCH_MY_MESSAGES_FAILED, FETCH_MY_MESSAGES_SUCCEEDED, SET_CURRENT_THREAD_ID, SEND_MESSAGE_SUCCEEDED } from "./actions"
 const initialState = {
     brand: "dxp",
     theme: "light",
@@ -12,24 +12,11 @@ const initialState = {
         preferredLanguage: "",
         accessToken: ""
     },
+    users: [],
     messageReceiver: "james1234",
-    currentThread: [
-        {
-            id: "12345",
-            thread_id: "1212",
-            from: "james1234",
-            to: "hybridcoder",
-            message: "testing the new message framework",
-            created_date: "11/12/2019 15:02:00"
-        },
-        {
-            id: "4jr8w",
-            thread_id: "1212",
-            from: "hybridcoder",
-            to: "james1234",
-            message: "testing reply",
-            created_date: "11/12/2019 15:02:00"
-        }
+    currentThreadId: "",
+    messages: [
+
     ],
 
 }
@@ -97,7 +84,8 @@ function reducer(state = initialState, action) {
         case FETCH_USERS_SUCCEEDED:
             return Object.assign({}, state, {
                 loading: false,
-                error: null
+                error: null,
+                users: action.users
             })
         case FETCH_MY_MESSAGES:
             return Object.assign({}, state, {
@@ -113,8 +101,18 @@ function reducer(state = initialState, action) {
             return Object.assign({}, state, {
                 loading: false,
                 error: null,
-                myMessages: action.messages
+                messages: action.messages,
+                currentThreadId: action.messages[0].threadId
             })
+        case SET_CURRENT_THREAD_ID:
+            return Object.assign({}, state, {
+                currentThreadId: action.threadId
+            })
+        case SEND_MESSAGE_SUCCEEDED:
+            return Object.assign({}, state, {
+                messages: action.messages
+            })
+
         default:
             return state
     }
@@ -127,6 +125,8 @@ export const getLoading = state => state.loading;
 export const getBrand = state => state.brand;
 export const getTheme = state => state.theme;
 export const getUser = state => state.userProfile.username;
-export const getMessages = state => state.currentThread;
-export const getMessageReceiver = state => state.messageReceiver
+export const getMessages = state => state.messages;
+export const getMessageReceiver = state => state.messageReceiver;
+export const getCurrentThreadId = state => state.currentThreadId;
+export const getAllUsers = state => state.users;
 export default reducer;

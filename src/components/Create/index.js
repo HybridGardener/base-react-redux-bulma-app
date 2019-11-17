@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import TextField from '../TextField';
 import Select from '../Select';
+import { FormattedMessage } from 'react-intl';
 const Create = ({ timeframes, users }) => {
     const [description, setDescription] = useState('');
     const [timeframe, setTimeframe] = useState('');
     const [user, setUser] = useState('');
+
+
     return (
         <div >
             <div className="create">
@@ -19,7 +22,14 @@ const Create = ({ timeframes, users }) => {
                                 <Select id="Create.timeframe" name="timeframe" value={timeframe} handleSelectionChanged={(e) => setTimeframe(e.target.value)} />
                             </div>
                             <div className="column is-full">
-                                <Select id="Create.user" name="user" value={user} handleSelectionChanged={(e) => setUser(e.target.value)} />
+                                <div>
+                                    <FormattedMessage id="Create.user" />
+                                    <select name="user" onChange={(e) => setUser(e.target.value)}
+                                        value={user}>
+                                        <option>-select-</option>
+                                        {users ? users.map(item => <option key={item.username} value={item.username}>{item.username}</option>) : ""}
+                                    </select>
+                                </div>
                             </div>
                             <div className="column is-full">
                                 <button className="button is-medium is-inverted is-outlined">Create</button>

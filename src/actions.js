@@ -8,26 +8,51 @@ export const FETCH_BRAND = "FETCH_BRAND";
 export const FETCH_BRAND_FAILED = "FETCH_BRAND_FAILED";
 export const FETCH_BRAND_SUCCEEDED = "FETCH_BRAND_SUCCEEDED";
 export const SET_THEME = "SET_THEME";
+export const SET_CURRENT_THREAD_ID = "SET_CURRENT_THREAD_ID";
 export const FETCH_USERS = "FETCH_USERS";
 export const FETCH_USERS_FAILED = "FETCH_USERS_FAILED";
 export const FETCH_USERS_SUCCEEDED = "FETCH_USERS_SUCCEEDED";
 export const FETCH_MY_MESSAGES = "FETCH_MY_MESSAGES";
 export const FETCH_MY_MESSAGES_FAILED = "FETCH_MY_MESSAGES_FAILED";
 export const FETCH_MY_MESSAGES_SUCCEEDED = "FETCH_MY_MESSAGES_SUCCEEDED";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const SEND_MESSAGE_FAILED = "SEND_MESSAGE_FAILED";
+export const SEND_MESSAGE_SUCCEEDED = "SEND_MESSAGE_SUCCEEDED";
 
+
+export function sendMessage(messageReceiver, messageText, currentUser, threadId) {
+    return {
+        type: SEND_MESSAGE,
+        payload: { messageReceiver, messageText, currentUser, threadId }
+    }
+}
+export function sendMessageFailed(error) {
+    return {
+        type: SEND_MESSAGE_FAILED,
+        error
+
+    }
+}
+export function sendMessageSucceeded(messages) {
+    return {
+        type: SEND_MESSAGE_SUCCEEDED,
+        messages
+
+    }
+}
 export function fetchMyMessages(me) {
     return {
         type: FETCH_MY_MESSAGES,
         me
     }
 }
-export function fetchMessagesFailed(error) {
+export function fetchMyMessagesFailed(error) {
     return {
         type: FETCH_MY_MESSAGES_FAILED,
         error
     }
 }
-export function fetchMessagesSucceeded(messages) {
+export function fetchMyMessagesSucceeded(messages) {
     return {
         type: FETCH_MY_MESSAGES_SUCCEEDED,
         messages
@@ -112,6 +137,13 @@ export function loginFailed(error) {
 export function loginSucceeded() {
     return {
         type: LOGIN_SUCCEEDED
+
+    }
+}
+export function setCurrentThreadId(threadId) {
+    return {
+        type: SET_CURRENT_THREAD_ID,
+        threadId
 
     }
 }

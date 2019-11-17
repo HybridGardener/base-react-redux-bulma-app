@@ -1,31 +1,65 @@
-import { put, takeEvery, takeLatest } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed } from './actions';
+import { put, takeEvery, takeLatest, select } from 'redux-saga/effects'
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed } from './actions';
 import { BASE_URL, PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
+import uuid from 'uuid';
+import { getMessages } from './appReducer';
+import { yieldExpression } from '@babel/types';
 
 export default function* rootSaga() {
     yield takeLatest(LOAD_MODULE, loadModuleSaga);
     yield takeLatest(LOGIN, loginSaga);
     yield takeLatest(FETCH_USERS, fetchUsersSaga);
     yield takeLatest(FETCH_MY_MESSAGES, fetchMyMessagesSaga);
+    yield takeLatest(SEND_MESSAGE, sendMessageSaga);
     yield put(loadModule());
-    yield put(fetchUsers());
+
 }
 
 export function* fetchUsersSaga(action) {
     try {
-        const users = axios.get('http://localhost:8081/listUsers');
-        yield put(fetchUsersSucceeded(users));
+        const response = yield axios.get('http://localhost:3000/users');
+        yield put(fetchUsersSucceeded(response.data));
     } catch (error) {
         yield put(fetchUsersFailed(error))
     }
 }
 export function* fetchMyMessagesSaga(action) {
     try {
-        const me = action.me;
-
+        const response = yield axios.get('http://localhost:3000/messages');
+        yield put(fetchMyMessagesSucceeded(response.data));
     } catch (error) {
+        yield put(fetchMyMessagesFailed(error))
+    }
+}
+export function* sendMessageSaga(action) {
+    console.log(action.payload);
+    const sender = action.payload.currentUser;
+    const message = action.payload.messageText;
+    const recipient = action.payload.messageReceiver;
+    const threadId = action.payload.threadId;
 
+
+    const newMessage = {
+        id: uuid(),
+        threadId: threadId,
+        to: recipient,
+        from: sender,
+        message: message,
+        createdDate: Date.now(),
+        opened: false,
+        openedDateTime: ""
+    }
+    try {
+        const response = yield axios.post('http://localhost:3000/messages', newMessage, { headers: { "Content-Type": "application/json" } });
+        if (response) {
+            const messages = yield select(getMessages);
+            console.log(messages);
+            messages.push(newMessage)
+            yield put(sendMessageSucceeded(messages));
+        }
+    } catch (error) {
+        yield put(sendMessageFailed(error))
     }
 }
 export function* loadModuleSaga() {
@@ -48,8 +82,11 @@ export function* loginSaga(action) {
     try {
         const username = action.payload.username;
         const password = action.payload.password;
-        if (username === 'admin' && password === '1234') {
+
+        if (username === 'hybridcoder' && password === '1234') {
             yield put(loginSucceeded());
+            yield put(fetchMyMessages(username));
+            yield put(fetchUsers());
         } else {
             yield put(loginFailed('invalid credentials'));
         }
