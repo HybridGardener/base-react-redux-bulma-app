@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TextField from '../TextField';
 import Select from '../Select';
 import { FormattedMessage } from 'react-intl';
+import { getAllUsers, getTimeframes } from '../../appReducer';
 const Create = ({ timeframes, users }) => {
     const [description, setDescription] = useState('');
     const [timeframe, setTimeframe] = useState('');
@@ -41,4 +42,15 @@ const Create = ({ timeframes, users }) => {
         </div>
     )
 }
-export default Create;
+const mapStateToProps = (state) => {
+    return {
+        users: getAllUsers(state),
+        timeframes: getTimeframes(state)
+    }
+}
+const mapDispatchToProps = (state) => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, null)(Create);

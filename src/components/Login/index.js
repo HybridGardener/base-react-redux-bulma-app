@@ -49,11 +49,7 @@ const Login = ({ authenticating, handleLogin, error }) => {
                                 <TextField name="password" type={"password"} hasCheck={password !== ""} styleName={"input"} id="Login.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </div>
-                        {error ? <div className="columns">
-                            <div className="column">
-                                <p>{error}</p>
-                            </div>
-                        </div> : ""}
+
                         <div className="columns">
                             <div className="column">
                                 <button className="button is-primary is-fullwidth" onClick={() => handleLogin(username, password)} disabled={authenticating}>

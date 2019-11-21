@@ -11,7 +11,6 @@ import { setTheme } from './actions';
 import Create from './components/Create';
 import Messenger from './components/Messenger';
 
-
 function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, currentUser, users }) {
   const brandIcon = require(`./images/${brand}/emblem.png`)
   const [lightDark, setLightDark] = useState("light");
@@ -30,6 +29,7 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, curr
       document.getElementById("root").classList.add('light')
     }
   }
+
   if (!isUserLoggedIn) return <Login />
   if (loading) return <h1>Loading..</h1>
   return (

@@ -8,7 +8,7 @@ const Select = ({ id, name, options, handleSelectionChanged }) => {
             <FormattedMessage id={id} />
             <select name={name} onChange={handleSelectionChanged}>
                 <option>-select-</option>
-                {options ? options.map(item => <option key={item.key}>{item.value}</option>) : <option>-none-</option>}
+                {options}
             </select>
         </div>
     )

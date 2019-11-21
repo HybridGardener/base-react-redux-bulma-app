@@ -6,7 +6,7 @@ const Message = ({ message, isMe, opened, createdDate, openedDate }) => {
         <div className={style}>
             <div className="message">
                 <p><strong>{message}</strong></p>
-                <p><small>{openedDate}</small></p>
+                <p><small>{createdDate}</small></p>
             </div>
         </div>
     )

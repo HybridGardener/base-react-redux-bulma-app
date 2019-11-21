@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
@@ -16,7 +16,10 @@ import { Provider } from 'react-redux'
 import enLocaleData from "react-intl/locale-data/en";
 import Dashboard from './components/Dashboard';
 import { fetchBrandSucceeded, setTheme } from './actions';
+
+
 addLocaleData(enLocaleData);
+
 const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware()

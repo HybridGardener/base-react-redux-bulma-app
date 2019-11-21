@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { PropTypes } from 'prop-types'
@@ -12,8 +12,9 @@ const Messenger = ({ currentUser, messageReceiver, messages, threadId, send, all
         console.log(messageReceiver, messageText, currentUser, threadId);
 
     }
-    console.log(messages)
+  
     const [messageText, setMessageText] = useState('');
+  
     return (
         <div className="messenger columns is-multiline">
             <div className="column is-centered is-full box">

@@ -18,6 +18,7 @@ const initialState = {
     messages: [
 
     ],
+    timeframes: []
 
 }
 function reducer(state = initialState, action) {
@@ -129,4 +130,5 @@ export const getMessages = state => state.messages;
 export const getMessageReceiver = state => state.messageReceiver;
 export const getCurrentThreadId = state => state.currentThreadId;
 export const getAllUsers = state => state.users;
+export const getTimeframes = state => state.timeframes;
 export default reducer;

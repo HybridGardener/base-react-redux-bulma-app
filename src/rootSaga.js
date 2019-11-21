@@ -1,10 +1,9 @@
 import { put, takeEvery, takeLatest, select } from 'redux-saga/effects'
 import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed } from './actions';
-import { BASE_URL, PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
+import { BASE_URL, AUTH_PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 import uuid from 'uuid';
 import { getMessages } from './appReducer';
-import { yieldExpression } from '@babel/types';
 
 export default function* rootSaga() {
     yield takeLatest(LOAD_MODULE, loadModuleSaga);
@@ -38,8 +37,6 @@ export function* sendMessageSaga(action) {
     const message = action.payload.messageText;
     const recipient = action.payload.messageReceiver;
     const threadId = action.payload.threadId;
-
-
     const newMessage = {
         id: uuid(),
         threadId: threadId,
@@ -54,7 +51,6 @@ export function* sendMessageSaga(action) {
         const response = yield axios.post('http://localhost:3000/messages', newMessage, { headers: { "Content-Type": "application/json" } });
         if (response) {
             const messages = yield select(getMessages);
-            console.log(messages);
             messages.push(newMessage)
             yield put(sendMessageSucceeded(messages));
         }
@@ -65,7 +61,7 @@ export function* sendMessageSaga(action) {
 export function* loadModuleSaga() {
     try {
         /*   
-           const url = `${BASE_URL}:${PORT}/${USER_ACCESS_SERVICE}`;
+           const url = `${BASE_URL}:${AUTH_PORT}/${USER_ACCESS_SERVICE}`;
            const headers = {
                "content-type": "application/json",
                "authentication": `${BASIC_TOKEN}`
@@ -77,16 +73,37 @@ export function* loadModuleSaga() {
 
     }
 }
-
+function buildAuthHeader(token) {
+    return {
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
+    }
+}
+function buildHeader(contentType) {
+    return {
+        'Content-Type': contentType
+    }
+}
 export function* loginSaga(action) {
     try {
         const username = action.payload.username;
         const password = action.payload.password;
+        const url = `${BASE_URL}:${AUTH_PORT}${USER_ACCESS_SERVICE}/login`;
+        console.log(url);
 
-        if (username === 'hybridcoder' && password === '1234') {
+        const user = {
+            name: username,
+            password: password
+        }
+        console.log(user);
+
+        const response = yield axios.post(url, user, { headers: buildHeader('application/json') });
+
+        if (response) {
+            console.log(response.data);
             yield put(loginSucceeded());
-            yield put(fetchMyMessages(username));
-            yield put(fetchUsers());
+            // yield put(fetchMyMessages(username));
+            //yield put(fetchUsers());
         } else {
             yield put(loginFailed('invalid credentials'));
         }
