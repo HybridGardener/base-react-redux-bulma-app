@@ -1,5 +1,5 @@
 import { put, takeEvery, takeLatest, select } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed } from './actions';
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed, LOGOUT } from './actions';
 import { BASE_URL, AUTH_PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 import uuid from 'uuid';
@@ -11,6 +11,7 @@ export default function* rootSaga() {
     yield takeLatest(FETCH_USERS, fetchUsersSaga);
     yield takeLatest(FETCH_MY_MESSAGES, fetchMyMessagesSaga);
     yield takeLatest(SEND_MESSAGE, sendMessageSaga);
+    yield takeLatest(LOGOUT, logoutSaga);
     yield put(loadModule());
 
 }
@@ -60,14 +61,7 @@ export function* sendMessageSaga(action) {
 }
 export function* loadModuleSaga() {
     try {
-        /*   
-           const url = `${BASE_URL}:${AUTH_PORT}/${USER_ACCESS_SERVICE}`;
-           const headers = {
-               "content-type": "application/json",
-               "authentication": `${BASIC_TOKEN}`
-           }
-           const response = axios.get(url, { headers: headers });
-           localStorage.setItem("accessToken", response.data)*/
+        const sessionToken = sessionStorage.getItem('token');
         yield put(loadModuleSucceeded());
     } catch (error) {
 
@@ -100,8 +94,10 @@ export function* loginSaga(action) {
         const response = yield axios.post(url, user, { headers: buildHeader('application/json') });
 
         if (response) {
-            console.log(response.data);
-            yield put(loginSucceeded());
+            yield put(loginSucceeded(response.data));
+            const token = response.data.token;
+            sessionStorage.setItem('token', token);
+            console.log(token);
             // yield put(fetchMyMessages(username));
             //yield put(fetchUsers());
         } else {
@@ -109,5 +105,13 @@ export function* loginSaga(action) {
         }
     } catch (error) {
         yield put(loginFailed(error));
+    }
+}
+
+export function* logoutSaga() {
+    try {
+        sessionStorage.setItem('token', '');
+    } catch (error) {
+        console.log(error);
     }
 }

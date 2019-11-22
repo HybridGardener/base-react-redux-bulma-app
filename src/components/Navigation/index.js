@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { injectIntl } from 'react-intl'
 import { Link } from 'react-router-dom'
 import './style.scss'
-import Menu from '../Menu'
-const Navigation = ({ title, icon, iconClick }) => {
+const Navigation = ({ title, icon, iconClick, handleLogout }) => {
     const [isOpen, setIsOpen] = useState(false);
     const hamburgerClick = () => {
         const val = isOpen ? false : true;
@@ -30,7 +29,27 @@ const Navigation = ({ title, icon, iconClick }) => {
                 </a>
             </div>
             {isOpen ?
-                <Menu className="mobile-menu is-mobile is-hidden-touch" />
+                <div className="columns is-multiline has-text-centered">
+                    <div className="column">
+                        <Link to="/create"><strong>Create</strong></Link>
+                    </div>
+                    <div className="column">
+                        <Link to="/history"><strong>History</strong></Link>
+                    </div>
+                    <div className="column">
+                        <Link to="/users"><strong>Users</strong></Link>
+                    </div>
+                    <div className="column">
+                        <Link to="/messages">
+
+                            <i className="fas fa-envelope" ></i>
+
+                        </Link>
+                    </div>
+                    <div className="column">
+                        <a onClick={handleLogout}><strong>Logout</strong></a>
+                    </div>
+                </div>
                 : ""
             }
 

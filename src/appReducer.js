@@ -1,17 +1,16 @@
-import { LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED, SET_THEME, FETCH_USERS, FETCH_USERS_SUCCEEDED, FETCH_USERS_FAILED, FETCH_MY_MESSAGES, FETCH_MY_MESSAGES_FAILED, FETCH_MY_MESSAGES_SUCCEEDED, SET_CURRENT_THREAD_ID, SEND_MESSAGE_SUCCEEDED } from "./actions"
+import { LOGOUT, LOAD_MODULE, LOAD_MODULE_FAILED, LOAD_MODULE_SUCCEEDED, LOGIN_FAILED, LOGIN_SUCCEEDED, LOGIN, FETCH_BRAND, FETCH_BRAND_FAILED, FETCH_BRAND_SUCCEEDED, SET_THEME, FETCH_USERS, FETCH_USERS_SUCCEEDED, FETCH_USERS_FAILED, FETCH_MY_MESSAGES, FETCH_MY_MESSAGES_FAILED, FETCH_MY_MESSAGES_SUCCEEDED, SET_CURRENT_THREAD_ID, SEND_MESSAGE_SUCCEEDED, REGISTER, REGISTRATION_FAILED, REGISTRATION_SUCCEEDED } from "./actions"
 const initialState = {
     brand: "dxp",
     theme: "light",
     loading: false,
     error: "",
     authenticating: false,
-    isUserLoggedIn: false,
-    userProfile: {
-        username: "hybridcoder",
-        password: "",
-        preferredLanguage: "",
-        accessToken: ""
+    registering: false,
+    user: {
+        name: "",
+        token: ""
     },
+    isUserLoggedIn: false,
     users: [],
     messageReceiver: "james1234",
     currentThreadId: "",
@@ -34,7 +33,9 @@ function reducer(state = initialState, action) {
         case LOAD_MODULE_SUCCEEDED:
             return Object.assign({}, state, {
                 loading: false,
-                error: null
+                error: null,
+                token: action.sessionToken,
+                isUserLoggedIn: true
             })
         case LOGIN:
             return Object.assign({}, state, {
@@ -51,6 +52,27 @@ function reducer(state = initialState, action) {
                 authenticating: false,
                 isUserLoggedIn: true,
                 error: null,
+                user: { name: action.response.result.name, token: action.response.token }
+            })
+        case REGISTER:
+            return Object.assign({}, state, {
+                registering: true
+            })
+        case REGISTRATION_FAILED:
+            return Object.assign({}, state, {
+                error: action.error,
+                registering: false,
+            })
+        case REGISTRATION_SUCCEEDED:
+            return Object.assign({}, state, {
+                registering: false,
+                error: null
+            })
+        case LOGOUT:
+            return Object.assign({}, state, {
+                user: { name: "", token: "" },
+                token: "",
+                isUserLoggedIn: false
             })
         case FETCH_BRAND:
             return Object.assign({}, state, {
@@ -125,10 +147,11 @@ export const getError = state => state.error;
 export const getLoading = state => state.loading;
 export const getBrand = state => state.brand;
 export const getTheme = state => state.theme;
-export const getUser = state => state.userProfile.username;
+export const getUser = state => state.user.name;
 export const getMessages = state => state.messages;
 export const getMessageReceiver = state => state.messageReceiver;
 export const getCurrentThreadId = state => state.currentThreadId;
 export const getAllUsers = state => state.users;
 export const getTimeframes = state => state.timeframes;
+export const getRegistering = state => state.registering;
 export default reducer;

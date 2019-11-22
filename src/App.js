@@ -7,11 +7,11 @@ import Login from './components/Login';
 import { getIsUserLoggedIn, getLoading, getBrand, getTheme, getUser, getAllUsers } from './appReducer';
 import Navigation from './components/Navigation';
 import SideMenu from './components/SideMenu';
-import { setTheme } from './actions';
+import { setTheme, logout } from './actions';
 import Create from './components/Create';
 import Messenger from './components/Messenger';
 
-function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, currentUser, users }) {
+function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, currentUser, users, signOff }) {
   const brandIcon = require(`./images/${brand}/emblem.png`)
   const [lightDark, setLightDark] = useState("light");
   function handleIconClick() {
@@ -29,18 +29,22 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, curr
       document.getElementById("root").classList.add('light')
     }
   }
-
-  if (!isUserLoggedIn) return <Login />
+  function handleLogout() {
+    console.log('handleLogout');
+    signOff();
+  }
+  const sessionToken = sessionStorage.getItem('token');
+  if (!isUserLoggedIn && !sessionToken) return <Login />
   if (loading) return <h1>Loading..</h1>
   return (
     <div className="app">
 
       <div className="columns is-variable is-multiline is-gapless">
         <div className="column is-full">
-          <Navigation title={`${brand.toUpperCase()} Module`} icon={brandIcon} iconClick={() => handleIconClick()} />
+          <Navigation title={`${brand.toUpperCase()} Module`} icon={brandIcon} iconClick={() => handleIconClick()} handleLogout={() => handleLogout()} />
         </div>
         <div className="column is-one-quarter-desktop is-one-quarter-tablet is-one-quarter-touch is-hidden-mobile">
-          <SideMenu title={"Side Menu"} checked={theme == "dark"} themeCheckedState={lightDark} onThemeChanged={(e) => handleThemeChange(e)} />
+          <SideMenu title={"Side Menu"} checked={theme == "dark"} themeCheckedState={lightDark} onThemeChanged={(e) => handleThemeChange(e)} handleLogout={() => handleLogout()} />
         </div>
         <div className="column is-full-mobile">
           <Switch>
@@ -70,7 +74,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeTheme: (e) => dispatch(setTheme(e))
+    changeTheme: (e) => dispatch(setTheme(e)),
+    signOff: () => dispatch(logout())
   }
 }
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(App))

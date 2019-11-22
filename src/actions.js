@@ -18,6 +18,16 @@ export const FETCH_MY_MESSAGES_SUCCEEDED = "FETCH_MY_MESSAGES_SUCCEEDED";
 export const SEND_MESSAGE = "SEND_MESSAGE";
 export const SEND_MESSAGE_FAILED = "SEND_MESSAGE_FAILED";
 export const SEND_MESSAGE_SUCCEEDED = "SEND_MESSAGE_SUCCEEDED";
+export const LOGOUT = "LOGOUT";
+export const REGISTER = "REGISTER";
+export const REGISTRATION_FAILED = "REGISTRATION_FAILED";
+export const REGISTRATION_SUCCEEDED = "REGISTRATION_SUCCEEDED";
+
+export function logout() {
+    return {
+        type: LOGOUT
+    }
+}
 
 
 export function sendMessage(messageReceiver, messageText, currentUser, threadId) {
@@ -115,9 +125,10 @@ export function loadModuleFailed() {
     }
 }
 
-export function loadModuleSucceeded() {
+export function loadModuleSucceeded(sessionToken) {
     return {
-        type: LOAD_MODULE_SUCCEEDED
+        type: LOAD_MODULE_SUCCEEDED,
+        sessionToken
     }
 }
 
@@ -134,12 +145,40 @@ export function loginFailed(error) {
     }
 }
 
-export function loginSucceeded() {
+export function loginSucceeded(response) {
     return {
-        type: LOGIN_SUCCEEDED
+        type: LOGIN_SUCCEEDED,
+        response
 
     }
 }
+
+
+
+export function register(username, password) {
+    return {
+        type: REGISTER,
+        payload: { username, password }
+    }
+}
+export function registrationFailed(error) {
+    return {
+        type: REGISTRATION_FAILED,
+        error
+    }
+}
+
+export function registrationSucceeded(response) {
+    return {
+        type: REGISTRATION_SUCCEEDED,
+        response
+
+    }
+}
+
+
+
+
 export function setCurrentThreadId(threadId) {
     return {
         type: SET_CURRENT_THREAD_ID,
