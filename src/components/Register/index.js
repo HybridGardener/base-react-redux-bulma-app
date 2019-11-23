@@ -11,6 +11,7 @@ import mobileBanner from '../../images/vv/mobile-banner.jpg'
 const Register = ({ registering, handleRegister, error }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     return (
         <section className="section">
             <div className="hero is-unmargined">
@@ -49,10 +50,15 @@ const Register = ({ registering, handleRegister, error }) => {
                                 <TextField name="password" type={"password"} hasCheck={password !== ""} styleName={"input"} id="Register.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
                             </div>
                         </div>
+                        <div className="columns">
+                            <div className="column ">
+                                <TextField name="confirmPassword" type={"password"} hasCheck={confirmPassword === password && confirmPassword !== ""} styleName={"input"} id="Register.confirmPassword" value={confirmPassword} handleChange={(e) => setConfirmPassword(e.target.value)} />
+                            </div>
+                        </div>
 
                         <div className="columns">
                             <div className="column">
-                                <button className="button is-primary is-fullwidth" onClick={() => handleRegister(username, password)} disabled={registering}>
+                                <button className="button is-primary is-fullwidth" onClick={() => handleRegister(username, password)} disabled={registering || confirmPassword !== password || username === ""}>
                                     <FormattedMessage id="Register.register" />
                                 </button>
                             </div>
@@ -60,7 +66,7 @@ const Register = ({ registering, handleRegister, error }) => {
                     </div>
                     <div className="column is-third is-hidden-mobile"></div>
                 </div>
-            </div>   </section>
+            </div>   </section >
     )
 }
 function validateEmail(email) {

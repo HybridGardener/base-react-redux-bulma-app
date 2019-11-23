@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import TextField from '../TextField'
-import { login } from '../../actions'
+import { login, setIsRegister } from '../../actions'
 import { getAuthenticating, getError } from '../../appReducer'
 import './style.scss'
 import banner from '../../images/vv/banner.jpg'
 import mobileBanner from '../../images/vv/mobile-banner.jpg'
 
-const Login = ({ authenticating, handleLogin, error }) => {
+const Login = ({ authenticating, handleLogin, handleRegister, error }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     return (
@@ -39,19 +39,18 @@ const Login = ({ authenticating, handleLogin, error }) => {
                             </div>
                             <div className="column is-third is-hidden-mobile"></div>
                         </div>
-                        <div className="columns ">
-                            <div className="column ">
+                        <div className="columns is-multiline">
+                            <div className="column is-full">
                                 <TextField name="username" type={"email"} hasCheck={username !== ""} styleName={"input"} id="Login.username" value={username} handleChange={(e) => setUsername(e.target.value)} />
                             </div>
-                        </div>
-                        <div className="columns">
-                            <div className="column ">
+
+                            <div className="column is-full">
                                 <TextField name="password" type={"password"} hasCheck={password !== ""} styleName={"input"} id="Login.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
                             </div>
-                        </div>
-
-                        <div className="columns">
-                            <div className="column">
+                            <div className="column is-full">
+                                <a className="button" onClick={() => handleRegister(true)}>Register</a>
+                            </div>
+                            <div className="column is-full">
                                 <button className="button is-primary is-fullwidth" onClick={() => handleLogin(username, password)} disabled={authenticating}>
                                     <FormattedMessage id="Login.login" />
                                 </button>
@@ -77,6 +76,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        handleRegister: (isRegister) => dispatch(setIsRegister(isRegister)),
         handleLogin: (username, password) => dispatch(login(username, password))
     }
 }

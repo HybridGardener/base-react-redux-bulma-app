@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { Switch, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
-import { getIsUserLoggedIn, getLoading, getBrand, getTheme, getUser, getAllUsers } from './appReducer';
+import { getIsUserLoggedIn, getLoading, getBrand, getTheme, getUser, getAllUsers, getIsRegister, getToken } from './appReducer';
 import Navigation from './components/Navigation';
 import SideMenu from './components/SideMenu';
-import { setTheme, logout } from './actions';
+import { setTheme, logout, setIsRegister, loadModule } from './actions';
 import Create from './components/Create';
 import Messenger from './components/Messenger';
+import Register from './components/Register';
 
-function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, currentUser, users, signOff }) {
+function App({ isUserLoggedIn, loadModule, loading, brand, changeTheme, theme, history, users, signOff, isRegister, token }) {
   const brandIcon = require(`./images/${brand}/emblem.png`)
   const [lightDark, setLightDark] = useState("light");
+  useEffect(() => {
+    loadModule();
+  }, [])
+
   function handleIconClick() {
     history.push('/');
   }
@@ -33,12 +38,12 @@ function App({ isUserLoggedIn, loading, brand, changeTheme, theme, history, curr
     console.log('handleLogout');
     signOff();
   }
-  const sessionToken = sessionStorage.getItem('token');
-  if (!isUserLoggedIn && !sessionToken) return <Login />
+  if (isRegister) return <Register />
   if (loading) return <h1>Loading..</h1>
+
+  if (!token) return <Login />
   return (
     <div className="app">
-
       <div className="columns is-variable is-multiline is-gapless">
         <div className="column is-full">
           <Navigation title={`${brand.toUpperCase()} Module`} icon={brandIcon} iconClick={() => handleIconClick()} handleLogout={() => handleLogout()} />
@@ -69,13 +74,16 @@ const mapStateToProps = (state) => {
     brand: getBrand(state),
     theme: getTheme(state),
     currentUser: getUser(state),
-    users: getAllUsers(state)
+    users: getAllUsers(state),
+    isRegister: getIsRegister(state),
+    token: getToken(state)
   }
 }
 const mapDispatchToProps = (dispatch) => {
   return {
     changeTheme: (e) => dispatch(setTheme(e)),
-    signOff: () => dispatch(logout())
+    signOff: () => dispatch(logout()),
+    loadModule: () => dispatch(loadModule())
   }
 }
 export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(App))

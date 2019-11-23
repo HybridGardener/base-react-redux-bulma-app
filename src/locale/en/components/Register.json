@@ -2,5 +2,6 @@
     "Register.title": "Module Name",
     "Register.register": "Register",
     "Register.username": "Username",
-    "Register.password": "Password"
+    "Register.password": "Password",
+    "Register.confirmPassword": "Confirm Password"
 }

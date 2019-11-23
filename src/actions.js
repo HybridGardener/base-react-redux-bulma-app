@@ -22,7 +22,16 @@ export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const REGISTRATION_FAILED = "REGISTRATION_FAILED";
 export const REGISTRATION_SUCCEEDED = "REGISTRATION_SUCCEEDED";
+export const SET_IS_REGISTER = "SET_IS_REGISTER";
 
+
+
+export function setIsRegister(isRegister) {
+    return {
+        type: SET_IS_REGISTER,
+        isRegister
+    }
+}
 export function logout() {
     return {
         type: LOGOUT
@@ -119,16 +128,17 @@ export function loadModule() {
     }
 }
 
-export function loadModuleFailed() {
+export function loadModuleFailed(error) {
     return {
-        type: LOAD_MODULE_FAILED
+        type: LOAD_MODULE_FAILED,
+        error
     }
 }
 
-export function loadModuleSucceeded(sessionToken) {
+export function loadModuleSucceeded(token) {
     return {
         type: LOAD_MODULE_SUCCEEDED,
-        sessionToken
+        token
     }
 }
 

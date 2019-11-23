@@ -1,19 +1,57 @@
 import { put, takeEvery, takeLatest, select } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed, LOGOUT } from './actions';
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed, LOGOUT, VALIDATE_TOKEN, loadModuleFailed, REGISTER, registrationSucceeded, registrationFailed } from './actions';
 import { BASE_URL, AUTH_PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 import uuid from 'uuid';
 import { getMessages } from './appReducer';
 
 export default function* rootSaga() {
-    yield takeLatest(LOAD_MODULE, loadModuleSaga);
     yield takeLatest(LOGIN, loginSaga);
-    yield takeLatest(FETCH_USERS, fetchUsersSaga);
-    yield takeLatest(FETCH_MY_MESSAGES, fetchMyMessagesSaga);
-    yield takeLatest(SEND_MESSAGE, sendMessageSaga);
+    yield takeLatest(LOAD_MODULE, loadModuleSaga);
+    yield takeLatest(REGISTER, registerSaga);
     yield takeLatest(LOGOUT, logoutSaga);
-    yield put(loadModule());
 
+}
+
+export function* registerSaga(action) {
+    try {
+        const username = action.payload.username;
+        const password = action.payload.password;
+        const url = `${BASE_URL}:${AUTH_PORT}${USER_ACCESS_SERVICE}/users`;
+        const user = {
+            name: username,
+            password: password
+        }
+        const response = yield axios.post(url, user, { headers: buildHeader('application/json') });
+        console.log(response.statusText);
+        if (response.statusText == "Created") {
+            yield put(registrationSucceeded(response));
+        } else {
+
+            yield put(registrationFailed(response.statusText));
+
+        }
+
+    } catch (error) {
+        yield put(registrationFailed(error));
+
+    }
+}
+
+export function* loadModuleSaga(action) {
+    try {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            yield put(loadModuleSucceeded(token))
+        }
+        else {
+            yield put(loadModuleFailed('Authorization token missing'));
+
+        }
+    } catch (error) {
+        yield put(loadModuleFailed(error))
+
+    }
 }
 
 export function* fetchUsersSaga(action) {
@@ -59,14 +97,7 @@ export function* sendMessageSaga(action) {
         yield put(sendMessageFailed(error))
     }
 }
-export function* loadModuleSaga() {
-    try {
-        const sessionToken = sessionStorage.getItem('token');
-        yield put(loadModuleSucceeded());
-    } catch (error) {
 
-    }
-}
 function buildAuthHeader(token) {
     return {
         'Content-Type': 'application/json',
@@ -92,14 +123,11 @@ export function* loginSaga(action) {
         console.log(user);
 
         const response = yield axios.post(url, user, { headers: buildHeader('application/json') });
-
-        if (response) {
-            yield put(loginSucceeded(response.data));
-            const token = response.data.token;
+        const token = response.data.token;
+        if (token) {
             sessionStorage.setItem('token', token);
-            console.log(token);
-            // yield put(fetchMyMessages(username));
-            //yield put(fetchUsers());
+            console.log('logged in');
+            yield put(loginSucceeded(response.data));
         } else {
             yield put(loginFailed('invalid credentials'));
         }
@@ -110,7 +138,9 @@ export function* loginSaga(action) {
 
 export function* logoutSaga() {
     try {
-        sessionStorage.setItem('token', '');
+        sessionStorage.removeItem('token');
+        console.log('logged out');
+
     } catch (error) {
         console.log(error);
     }
