@@ -1,5 +1,7 @@
 {
     "Create.description": "Description",
     "Create.timeframe": "Timeframe",
-    "Create.user": "User"
+    "Create.user": "User",
+    "Create.priority": "Priority",
+    "Create.notes": "Notes"
 }

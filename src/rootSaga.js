@@ -1,6 +1,6 @@
 import { put, takeEvery, takeLatest, select } from 'redux-saga/effects'
-import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed, LOGOUT, VALIDATE_TOKEN, loadModuleFailed, REGISTER, registrationSucceeded, registrationFailed } from './actions';
-import { BASE_URL, AUTH_PORT, USER_ACCESS_SERVICE, BASIC_TOKEN } from './constants';
+import { LOAD_MODULE, loadModule, LOGIN, loginSucceeded, loginFailed, loadModuleSucceeded, FETCH_BRAND, FETCH_USERS, FETCH_MY_MESSAGES, fetchUsersSucceeded, fetchUsers, fetchUsersFailed, fetchMyMessagesSucceeded, fetchMyMessagesFailed, fetchMyMessages, SEND_MESSAGE, sendMessageSucceeded, sendMessageFailed, LOGOUT, VALIDATE_TOKEN, loadModuleFailed, REGISTER, registrationSucceeded, registrationFailed, createTodoFailed, createTodoSucceeded, CREATE_TODO, fetchTimeframes, FETCH_TIMEFRAMES, fetchTimeframesSucceeded, fetchTimeframesFailed } from './actions';
+import { BASE_URL, AUTH_PORT, ENDPOINT, BASIC_TOKEN } from './constants';
 import axios from 'axios'
 import uuid from 'uuid';
 import { getMessages } from './appReducer';
@@ -10,14 +10,29 @@ export default function* rootSaga() {
     yield takeLatest(LOAD_MODULE, loadModuleSaga);
     yield takeLatest(REGISTER, registerSaga);
     yield takeLatest(LOGOUT, logoutSaga);
+    yield takeLatest(CREATE_TODO, createTodoSaga);
+    yield takeLatest(FETCH_TIMEFRAMES, fetchTimeframesSaga);
+
 
 }
 
+export function* fetchTimeframesSaga() {
+    try {
+        const url = `${BASE_URL}:${AUTH_PORT}${ENDPOINT}/timeframes`;
+        const token = sessionStorage.getItem('token');
+        const timeframes = yield axios.get(url, { headers: buildAuthHeader(token) });
+        yield put(fetchTimeframesSucceeded(timeframes.data.result));
+    } catch (error) {
+        yield put(fetchTimeframesFailed(error));
+
+    }
+}
 export function* registerSaga(action) {
     try {
         const username = action.payload.username;
         const password = action.payload.password;
-        const url = `${BASE_URL}:${AUTH_PORT}${USER_ACCESS_SERVICE}/users`;
+        const rememberMe = action.payload.rememberMe;
+        const url = `${BASE_URL}:${AUTH_PORT}${ENDPOINT}/users`;
         const user = {
             name: username,
             password: password
@@ -26,10 +41,10 @@ export function* registerSaga(action) {
         console.log(response.statusText);
         if (response.statusText == "Created") {
             yield put(registrationSucceeded(response));
+            localStorage.setItem('rememberme', rememberMe);
+            localStorage.setItem('username', username);
         } else {
-
             yield put(registrationFailed(response.statusText));
-
         }
 
     } catch (error) {
@@ -41,6 +56,7 @@ export function* registerSaga(action) {
 export function* loadModuleSaga(action) {
     try {
         const token = sessionStorage.getItem('token');
+        yield put(fetchTimeframes());
         if (token) {
             yield put(loadModuleSucceeded(token))
         }
@@ -101,7 +117,7 @@ export function* sendMessageSaga(action) {
 function buildAuthHeader(token) {
     return {
         'Content-Type': 'application/json',
-        'Authorization': `${token}`
+        'Authorization': `Basic ${token}`
     }
 }
 function buildHeader(contentType) {
@@ -113,16 +129,17 @@ export function* loginSaga(action) {
     try {
         const username = action.payload.username;
         const password = action.payload.password;
-        const url = `${BASE_URL}:${AUTH_PORT}${USER_ACCESS_SERVICE}/login`;
+        const url = `${BASE_URL}:${AUTH_PORT}${ENDPOINT}/login`;
         console.log(url);
 
         const user = {
             name: username,
             password: password
         }
-        console.log(user);
 
         const response = yield axios.post(url, user, { headers: buildHeader('application/json') });
+        console.log(response);
+
         const token = response.data.token;
         if (token) {
             sessionStorage.setItem('token', token);
@@ -143,5 +160,23 @@ export function* logoutSaga() {
 
     } catch (error) {
         console.log(error);
+    }
+}
+
+export function* createTodoSaga(action) {
+    try {
+        const url = `${BASE_URL}:${AUTH_PORT}${ENDPOINT}/todos`
+        const todo = action.todo;
+        console.log(todo);
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            const response = yield axios.post(url, todo, { headers: buildAuthHeader(token) })
+            yield put(createTodoSucceeded(response));
+        }
+        else {
+            yield put(createTodoFailed('authorization token missing from request'))
+        }
+    } catch (error) {
+        yield put(createTodoFailed(error));
     }
 }

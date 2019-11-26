@@ -55,6 +55,15 @@ const Register = ({ registering, handleRegister, error }) => {
                                 <TextField name="confirmPassword" type={"password"} hasCheck={confirmPassword === password && confirmPassword !== ""} styleName={"input"} id="Register.confirmPassword" value={confirmPassword} handleChange={(e) => setConfirmPassword(e.target.value)} />
                             </div>
                         </div>
+                        <div className="columns">
+                            <div className="column ">
+                                <div className="fieldset">
+                                    <FormattedMessage id="Register.rememberMe" />
+                                    <input className="checkbox" type="checkbox" />
+
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="columns">
                             <div className="column">

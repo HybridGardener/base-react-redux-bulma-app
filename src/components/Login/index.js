@@ -39,7 +39,7 @@ const Login = ({ authenticating, handleLogin, handleRegister, error }) => {
                             </div>
                             <div className="column is-third is-hidden-mobile"></div>
                         </div>
-                        <div className="columns is-multiline">
+                        <div className="columns is-multiline is-gapless">
                             <div className="column is-full">
                                 <TextField name="username" type={"email"} hasCheck={username !== ""} styleName={"input"} id="Login.username" value={username} handleChange={(e) => setUsername(e.target.value)} />
                             </div>
@@ -47,7 +47,13 @@ const Login = ({ authenticating, handleLogin, handleRegister, error }) => {
                             <div className="column is-full">
                                 <TextField name="password" type={"password"} hasCheck={password !== ""} styleName={"input"} id="Login.password" value={password} handleChange={(e) => setPassword(e.target.value)} />
                             </div>
-                            <div className="column is-full">
+                            <div className="column is-half ">
+                                <div className="fieldset">
+                                    <FormattedMessage id="Register.rememberMe" />
+                                    <input className="checkbox" type="checkbox" />
+                                </div>
+                            </div>
+                            <div className="column is-half">
                                 <a className="button" onClick={() => handleRegister(true)}>Register</a>
                             </div>
                             <div className="column is-full">

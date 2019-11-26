@@ -3,5 +3,6 @@
     "Register.register": "Register",
     "Register.username": "Username",
     "Register.password": "Password",
-    "Register.confirmPassword": "Confirm Password"
+    "Register.confirmPassword": "Confirm Password",
+    "Register.rememberMe": "Remember Me"
 }

@@ -40,7 +40,6 @@ function App({ isUserLoggedIn, loadModule, loading, brand, changeTheme, theme, h
   }
   if (isRegister) return <Register />
   if (loading) return <h1>Loading..</h1>
-
   if (!token) return <Login />
   return (
     <div className="app">

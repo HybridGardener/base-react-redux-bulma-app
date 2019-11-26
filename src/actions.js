@@ -23,8 +23,30 @@ export const REGISTER = "REGISTER";
 export const REGISTRATION_FAILED = "REGISTRATION_FAILED";
 export const REGISTRATION_SUCCEEDED = "REGISTRATION_SUCCEEDED";
 export const SET_IS_REGISTER = "SET_IS_REGISTER";
+export const CREATE_TODO = "CREATE_TODO";
+export const CREATE_TODO_FAILED = "CREATE_TODO_FAILED";
+export const CREATE_TODO_SUCCEEDED = "CREATE_TODO_SUCCEEDED";
+export const FETCH_TIMEFRAMES = "FETCH_TIMEFRAMES";
+export const FETCH_TIMEFRAMES_FAILED = "FETCH_TIMEFRAMES_FAILED";
+export const FETCH_TIMEFRAMES_SUCCEEDED = "FETCH_TIMEFRAMES_SUCCEEDED";
 
-
+export function fetchTimeframes() {
+    return {
+        type: FETCH_TIMEFRAMES
+    }
+}
+export function fetchTimeframesFailed(error) {
+    return {
+        type: FETCH_TIMEFRAMES_FAILED,
+        error
+    }
+}
+export function fetchTimeframesSucceeded(timeframes) {
+    return {
+        type: FETCH_TIMEFRAMES_SUCCEEDED,
+        timeframes
+    }
+}
 
 export function setIsRegister(isRegister) {
     return {
@@ -37,8 +59,6 @@ export function logout() {
         type: LOGOUT
     }
 }
-
-
 export function sendMessage(messageReceiver, messageText, currentUser, threadId) {
     return {
         type: SEND_MESSAGE,
@@ -77,9 +97,6 @@ export function fetchMyMessagesSucceeded(messages) {
         messages
     }
 }
-
-
-
 export function fetchUsers() {
     return {
         type: FETCH_USERS
@@ -97,7 +114,6 @@ export function fetchUsersSucceeded(users) {
         users
     }
 }
-
 export function setTheme(theme) {
     return {
         type: SET_THEME,
@@ -127,21 +143,18 @@ export function loadModule() {
         type: LOAD_MODULE
     }
 }
-
 export function loadModuleFailed(error) {
     return {
         type: LOAD_MODULE_FAILED,
         error
     }
 }
-
 export function loadModuleSucceeded(token) {
     return {
         type: LOAD_MODULE_SUCCEEDED,
         token
     }
 }
-
 export function login(username, password) {
     return {
         type: LOGIN,
@@ -154,7 +167,6 @@ export function loginFailed(error) {
         error
     }
 }
-
 export function loginSucceeded(response) {
     return {
         type: LOGIN_SUCCEEDED,
@@ -162,13 +174,10 @@ export function loginSucceeded(response) {
 
     }
 }
-
-
-
-export function register(username, password) {
+export function register(username, password, rememberMe) {
     return {
         type: REGISTER,
-        payload: { username, password }
+        payload: { username, password, rememberMe }
     }
 }
 export function registrationFailed(error) {
@@ -177,7 +186,6 @@ export function registrationFailed(error) {
         error
     }
 }
-
 export function registrationSucceeded(response) {
     return {
         type: REGISTRATION_SUCCEEDED,
@@ -185,14 +193,29 @@ export function registrationSucceeded(response) {
 
     }
 }
-
-
-
-
 export function setCurrentThreadId(threadId) {
     return {
         type: SET_CURRENT_THREAD_ID,
         threadId
 
+    }
+}
+
+export function createTodo(todo) {
+    return {
+        type: CREATE_TODO,
+        todo
+    }
+}
+export function createTodoFailed(error) {
+    return {
+        type: CREATE_TODO_FAILED,
+        error
+    }
+}
+export function createTodoSucceeded(response) {
+    return {
+        type: CREATE_TODO_SUCCEEDED,
+        response
     }
 }

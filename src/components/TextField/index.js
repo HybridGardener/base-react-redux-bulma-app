@@ -1,7 +1,6 @@
 import React from 'react'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { PropTypes } from 'prop-types'
-import './style.scss';
 
 const TextField = ({ name, handleChange, id, subText, type, placeholder, styleName, hasCheck }) => {
     return (
