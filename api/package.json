@@ -14,7 +14,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "json-server": "^0.15.1",
-    "mongodb": "^2.2.16",
+    "mongodb": "^3.1.13",
     "nodemon": "^1.19.4",
     "uuid": "^3.3.3"
   }
